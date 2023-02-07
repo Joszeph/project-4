@@ -1,5 +1,5 @@
-
-const Logo = ({ type = "default" }) => {
+const Logo = () => {
+    const type = "default"
     let logoSrc;
   
     if (type === "muted") {
