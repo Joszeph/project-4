@@ -11,7 +11,7 @@ export default function User({
 }) {
   return (
     <div className={classNames(styles.user)}>
-      <Avatar size={size} url={avatar} verified={verified}/>
+      <Avatar />
       <div className={classNames(styles.userInfo)}>
         <p className={classNames(styles.name)}>{name}</p>
         <p className={classNames(styles.info)}>{info}</p>
