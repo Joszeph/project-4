@@ -1,5 +1,4 @@
-const Logo = () => {
-    const type = "default"
+export default function Logo({type}){
     let logoSrc;
   
     if (type === "muted") {
@@ -11,4 +10,3 @@ const Logo = () => {
     return <img src={logoSrc} alt="Logo" />;
   };
   
-  export default Logo;
