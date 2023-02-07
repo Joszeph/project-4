@@ -1,6 +1,6 @@
 import Avatar from "../avatar/Avatar";
 import classNames from "classnames";
-import styles from "./User.module.scss";
+import styles from './User.module.scss'
 
 export default function User({
   name = "",
