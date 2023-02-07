@@ -17,7 +17,7 @@ export default function Card({
   name = "",
   likes = 0,
   mediaUrl = "",
-  user = { avatar: { url: "" }, verified: false },
+  user = { avatar: { url: "" }, verified: true },
   price = "",
   currency = "",
 }) {
@@ -25,8 +25,8 @@ export default function Card({
 
   return (
     <MuiCard className={classNames(styles.card)}>
-      <Avatar src={user.url} size="33" />
-      <img src={mediaUrl} alt="" />
+      <Avatar src={user.avatar.url} size="33" verified={user.verified} />
+      <img src={mediaUrl} className={classNames(styles.media)} alt="" />
       <CardContent className={classNames(styles.titles)}>
         <div>
           <Typography
@@ -35,7 +35,7 @@ export default function Card({
             component="p"
             className={classNames(styles.title)}
           >
-            Hopper
+            {name}
           </Typography>
           <Typography
             variant="body2"
@@ -43,7 +43,7 @@ export default function Card({
             component="p"
             className={classNames(styles.price)}
           >
-         10 ETH
+            ~{price} {currency}
           </Typography>
         </div>
 
