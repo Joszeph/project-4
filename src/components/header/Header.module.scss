@@ -1,0 +1,25 @@
+@use "../../styles/colors.scss";
+
+.searchField {
+  background-color: colors.$background_default;
+  width: 580px;
+  border-radius: 30px;
+  color: colors.$text_primary;
+}
+
+.container {
+  background-color: colors.$background_paper;
+}
+
+.searchIcon {
+  color: colors.$text_primary;
+}
+
+.navMenuBtns {
+  color: colors.$text_primary !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 17px !important;
+  letter-spacing: 0em !important;
+  text-transform: capitalize !important;
+}
