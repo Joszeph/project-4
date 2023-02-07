@@ -1,25 +1,25 @@
 import Container from "@mui/material/Container";
-import { Grid, Button, TextField, InputAdornment} from "@mui/material";
+import { Grid, Button, TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import classNames from 'classnames'
+import classNames from "classnames";
 import Logo from "../../components/logo/Logo";
 
-import styles from './Header.module.scss'
+import styles from "./Header.module.scss";
 
 export default function Header() {
   return (
     <div>
-      <Container className={classNames(styles.container)} maxWidth >
-        <Grid container alignItems="center" justifyContent="space-evenly" >
-          <Grid item >
+      <Container className={classNames(styles.container)} maxWidth>
+        <Grid container alignItems="center" justifyContent="space-evenly">
+          <Grid item>
             <Logo type="default" />
           </Grid>
-          <Grid item >
+          <Grid item>
             <TextField
-             InputLabelProps={{
-                style: { color: '#fff' },
+              InputLabelProps={{
+                style: { color: "#fff" },
               }}
-             className={classNames(styles.searchField)}
+              className={classNames(styles.searchField)}
               placeholder="Find items, users and activities"
               InputProps={{
                 startAdornment: (
@@ -28,17 +28,21 @@ export default function Header() {
                   </InputAdornment>
                 ),
               }}
-            /> 
+            />
           </Grid>
-          <Grid item >
-            <Button  variant="text" className={classNames(styles.navMenuBtns)}>
+          <Grid item>
+            <Button variant="text" className={classNames(styles.navMenuBtns)}>
               Home
             </Button>
-            <Button  variant="text" className={classNames(styles.navMenuBtns)}>
+            <Button variant="text" className={classNames(styles.navMenuBtns)}>
               Activity
             </Button>
-            <Button color="primary" variant="contained" className={classNames(styles.navMenuBtns)}>
-              Contact
+            <Button
+              color="primary"
+              variant="contained"
+              className={classNames(styles.navMenuBtns)}
+            >
+              EXPLORE
             </Button>
           </Grid>
         </Grid>
