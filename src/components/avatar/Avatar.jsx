@@ -1,7 +1,6 @@
 import styles from "./Avatar.module.scss";
 import classNames from "classnames";
 
-
 export default function Avatar({
   size = 90,
   url = "/images/avatar.png",
