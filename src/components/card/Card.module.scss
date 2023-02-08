@@ -7,10 +7,21 @@
   background-color: colors.$background_paper;
 }
 
+.avatarHolder{
+  margin: 15px 0 21px 15px;
+}
+
+.imageHolder{
+  display: flex;
+  justify-content: center;
+}
+
 .media {
   width: 100%;
   height: 100%;
   border-radius: 15px;
+  height: 286px;
+  width: 309px;
 }
 
 .titles {

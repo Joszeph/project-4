@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import Link from "../../src/components/link/Link";
 import Header from "../../src/components/header/Header";
 import Card from "../../src/components/card/Card";
-
+import Avatar from "../../src/components/avatar/Avatar";
 
 
 export default function About() {
@@ -20,6 +20,7 @@ export default function About() {
               🏠 Home
             </Button>
             <Card />
+            <Avatar />
           </Grid>
         </Grid>
       </Container>
