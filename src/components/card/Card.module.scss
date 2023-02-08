@@ -18,20 +18,13 @@
   margin: 15px 0 21px 15px;
 }
 
+
 .imageHolder {
-  display: -webkit-flex;
-  display: -moz-box;
-  display: flex;
-  -webkit-justify-content: center;
-  -moz-box-pack: center;
-  justify-content: space-evenly;
-  -webkit-flex-direction: column;
-  -moz-box-orient: vertical;
-  -moz-box-direction: normal;
-  flex-direction: column;
-  align-items: center;
   position: relative;
-  top: -0px !important;
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .media {
@@ -63,42 +56,47 @@
   font-weight: 700 !important;
   font-size: 14.0752px !important;
   line-height: 17px !important;
+  margin-top: 6px !important;
 }
 
 .likes {
   color: colors.$secondary_main !important;
 }
 
-.badge {
-  background-color: #24f25e;
-  color: #181828;
-  position: relative;
-  top: 40px;
-  left: -107px;
+
+
+.badge,
+.countdown {
+  position: absolute;
   display: flex;
   align-items: center;
+  justify-content: center;
+  background-color: colors.$secondary_main;
+  color: colors.$background_paper;
+}
+
+.badge {
+  top: 9px !important;
+  left: 24px !important;
+  gap: 4px;
   width: 75px;
   height: 30px;
-  justify-content: center;
-  gap: 4px;
   border-radius: 7px;
-  font-weight: 700;
+}
+
+.badgeText {
   font-size: 14px;
-  line-height: 17px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 17.7px;
 }
 
 .countdown {
-  background-color: #24f25e;
-  color: #181828;
-  position: relative;
-  top: -29px;
+  bottom: 0px;
   width: 309px;
   height: 42px;
   border-radius: 0px 0px 15px 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: colors.$secondary_main;
   font-size: 18px;
   font-weight: 700;
-  line-height: 22px;
 }

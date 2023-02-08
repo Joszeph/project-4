@@ -16,12 +16,12 @@ import theme from '../../theme'
 import Avatar from "../../components/avatar/Avatar";
 
 export default function Card({
-  name = "",
+  name = "Angel",
   likes = 0,
   mediaUrl = "/images/nft.jpg",
   user = { avatar: { url: "" }, verified: true },
-  price = "",
-  currency = "",
+  price = "100",
+  currency = "BTJ",
   timeLeft 
 }) {
   const likesMilified = millify(likes);
