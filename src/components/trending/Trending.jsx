@@ -8,7 +8,8 @@ import styles from "./Trending.module.scss";
 
 export default function Trending({ cards = [] }) {
   return (
-    <Container maxWidth>
+   <div>
+     <Container maxWidth>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <h1 className={classNames(styles.header)}>Trending</h1>
         <Select
@@ -36,5 +37,6 @@ export default function Trending({ cards = [] }) {
         ))}
       </Grid>
     </Container>
+   </div>
   );
 }
