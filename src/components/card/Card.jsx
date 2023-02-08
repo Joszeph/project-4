@@ -11,17 +11,17 @@ import millify from "millify";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import styles from "./Card.module.scss";
-import theme from '../../theme'
+
 
 import Avatar from "../../components/avatar/Avatar";
 
 export default function Card({
-  name = "Angel",
+  name = "",
   likes = 0,
   mediaUrl = "/images/nft.jpg",
-  user = { avatar: { url: "" }, verified: true },
-  price = "100",
-  currency = "BTJ",
+  user = { avatar: { url: "" }, verified: false },
+  price = "",
+  currency = "",
   timeLeft 
 }) {
   const likesMilified = millify(likes);
@@ -38,7 +38,6 @@ export default function Card({
       {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}
     </div>
   );
-
 
   return (
   
