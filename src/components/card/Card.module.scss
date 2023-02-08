@@ -7,13 +7,31 @@
   background-color: colors.$background_paper;
 }
 
-.avatarHolder{
+.cardLive {
+  width: 339px;
+  height: 443px;
+  border-radius: 15px;
+  background-color: red !important;
+}
+
+.avatarHolder {
   margin: 15px 0 21px 15px;
 }
 
-.imageHolder{
+.imageHolder {
+  display: -webkit-flex;
+  display: -moz-box;
   display: flex;
-  justify-content: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  justify-content: space-evenly;
+  -webkit-flex-direction: column;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: -0px !important;
 }
 
 .media {
@@ -27,17 +45,60 @@
 .titles {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  position: relative;
+  top: -3px !important;
 }
 
 .title {
   font-weight: 900 !important;
   font-size: 16px !important;
+  font-weight: 900 !important;
+  font-size: 16px !important;
+  line-height: 20px !important;
 }
 
 .price {
   color: colors.$secondary_main !important;
+  font-weight: 700 !important;
+  font-size: 14.0752px !important;
+  line-height: 17px !important;
 }
 
 .likes {
   color: colors.$secondary_main !important;
+}
+
+.badge {
+  background-color: #24f25e;
+  color: #181828;
+  position: relative;
+  top: 40px;
+  left: -107px;
+  display: flex;
+  align-items: center;
+  width: 75px;
+  height: 30px;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 7px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.countdown {
+  background-color: #24f25e;
+  color: #181828;
+  position: relative;
+  top: -29px;
+  width: 309px;
+  height: 42px;
+  border-radius: 0px 0px 15px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
 }
