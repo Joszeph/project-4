@@ -7,6 +7,7 @@ import Header from "../../src/components/header/Header";
 import Card from "../../src/components/card/Card";
 import Avatar from "../../src/components/avatar/Avatar";
 import Trending from "../../src/components/trending/Trending";
+import Auctions from "../../src/components/auctions/Auctions"
 
 
 
@@ -24,6 +25,7 @@ export default function About() {
             <Card />
             <Avatar />
             <Trending />
+            <Auctions />
           </Grid>
         </Grid>
       </Container>

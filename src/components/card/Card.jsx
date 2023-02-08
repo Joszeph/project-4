@@ -15,6 +15,7 @@ import styles from "./Card.module.scss";
 
 import Avatar from "../../components/avatar/Avatar";
 
+
 export default function Card({
   name = "",
   likes = 0,
