@@ -4,8 +4,8 @@ import classNames from "classnames";
 export default function Avatar({
   size = 90,
   url = "/images/avatar.png",
-  verified = false,
-  badgeSize,
+  verified = true,
+  badgeSize 
 }) {
   return (
     <div

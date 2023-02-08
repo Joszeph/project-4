@@ -17,7 +17,7 @@ export default function Card({
   name = "",
   likes = 0,
   mediaUrl = "",
-  user = { avatar: { url: "" }, verified: true, badgeSize : "15.55" },
+  user = { avatar: { url: "" }, verified: true },
   price = "",
   currency = "",
 }) {
@@ -26,7 +26,7 @@ export default function Card({
   return (
     <MuiCard className={classNames(styles.card)}>
       <div className={classNames(styles.avatarHolder)}>
-      <Avatar src={user.avatar.url} size="33" verified={user.verified} badgeSize={user.badgeSize}/>
+      <Avatar src={user.avatar.url} size="33" verified={user.verified} badgeSize="15.55"/>
       </div>
      <div className={classNames(styles.imageHolder)}>
      <img src="/images/nft.jpg" className={classNames(styles.media)} alt="" />

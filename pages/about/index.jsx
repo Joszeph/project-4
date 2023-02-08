@@ -6,6 +6,8 @@ import Link from "../../src/components/link/Link";
 import Header from "../../src/components/header/Header";
 import Card from "../../src/components/card/Card";
 import Avatar from "../../src/components/avatar/Avatar";
+import Trending from "../../src/components/trending/Trending";
+
 
 
 export default function About() {
@@ -13,7 +15,7 @@ export default function About() {
     <>
 
       <Header />
-      <Container maxWidth="sm">
+      <Container maxWidth="xl">
         <Grid container justifyContent="center">
           <Grid item>
             <Button variant="contained" component={Link} noLinkStyle href="/">
@@ -21,6 +23,7 @@ export default function About() {
             </Button>
             <Card />
             <Avatar />
+            <Trending />
           </Grid>
         </Grid>
       </Container>
