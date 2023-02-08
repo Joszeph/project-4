@@ -4,7 +4,7 @@ import classNames from "classnames";
 export default function Avatar({
   size = 90,
   url = "/images/avatar.png",
-  verified = true,
+  verified = false,
   badgeSize 
 }) {
   return (

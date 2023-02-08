@@ -29,7 +29,7 @@ export default function Card({
       <Avatar src={user.avatar.url} size="33" verified={user.verified} badgeSize="15.55"/>
       </div>
      <div className={classNames(styles.imageHolder)}>
-     <img src="/images/nft.jpg" className={classNames(styles.media)} alt="" />
+     <img src={mediaUrl} className={classNames(styles.media)} alt="" />
      </div>
       <CardContent className={classNames(styles.titles)}>
         <div>
