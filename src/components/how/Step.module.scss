@@ -18,6 +18,7 @@
 }
 
 .stepP p {
+  color:colors.$text_primary;
   font-style: normal;
   font-weight: 700;
   font-size: 100.333px;
@@ -44,6 +45,7 @@
   font-size: 18px;
   line-height: 22px;
   text-transform: uppercase;
+  color:colors.$text_primary;
 }
 
 .stepContent p:last-of-type {
@@ -52,4 +54,5 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
+  color:colors.$text_hint;
 }
