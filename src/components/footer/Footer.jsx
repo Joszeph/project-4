@@ -5,11 +5,11 @@ import {Button} from "@mui/material";
 import styles from "./Footer.module.scss";
 import classNames from "classnames";
 
-import Logo from "../../components/logo/Logo";
+import Logo from "../logo/Logo";
 
 export default function Copyright() {
   return (
-    <div className={classNames(styles.footerWrapper)}>
+    <footer className={classNames(styles.footerWrapper)}>
       <Container className={classNames(styles.container)} maxWidth="lg">
         <Grid container alignItems="center" justifyContent="space-around" spacing={10}>
           <Grid item>
@@ -24,6 +24,6 @@ export default function Copyright() {
           </Grid>
         </Grid>
       </Container>
-    </div>
+    </footer>
   );
 }
