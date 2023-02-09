@@ -4,11 +4,7 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Link from "../../src/components/link/Link";
 import Header from "../../src/components/header/Header";
-import Card from "../../src/components/card/Card";
-import Avatar from "../../src/components/avatar/Avatar";
-import Trending from "../../src/components/trending/Trending";
-import Auctions from "../../src/components/auctions/Auctions"
-
+import Footer from '../../src/components/footer/Footer'
 
 
 export default function About() {
@@ -22,13 +18,11 @@ export default function About() {
             <Button variant="contained" component={Link} noLinkStyle href="/">
               🏠 Home
             </Button>
-            <Card />
-            <Avatar />
-            <Trending />
-            <Auctions />
+           
           </Grid>
         </Grid>
       </Container>
+      <Footer />
     </>
   );
 }

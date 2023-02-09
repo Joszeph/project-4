@@ -1,0 +1,32 @@
+@use "../../styles//colors.scss";
+
+.footerWrapper {
+  background-color: colors.$background_default;
+}
+
+.container {
+  background-color: colors.$background_paper;
+  max-width: 100% !important;
+  display: flex !important;
+  justify-content: space-around !important;
+  align-items: center !important;
+  height: 98px;
+}
+
+.container p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  opacity: 0.5;
+  color: colors.$text_disabled;
+}
+
+.footerBtn {
+  color: colors.$text_primary !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  line-height: 17px !important;
+  text-transform:capitalize !important;
+}
