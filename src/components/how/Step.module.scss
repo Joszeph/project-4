@@ -11,20 +11,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: colors.$primary_main;
+  // color: colors.$primary_main;
   background-color: colors.$step_numbers_color;
   flex-basis: 30%;
-  border-radius: 15px 0 0 15px ;
+  border-radius: 15px 0 0 15px;
 }
 
-
-
 .stepP p {
-  color:colors.$text_primary;
+  color: colors.$text_primary;
   font-style: normal;
   font-weight: 700;
   font-size: 100.333px;
   line-height: 215px;
+}
+
+.stepNumber{
+  background-color: colors.$step_numbers_color;
 }
 
 .stepContent {
@@ -47,10 +49,8 @@
   font-size: 18px;
   line-height: 22px;
   text-transform: uppercase;
-  color:colors.$text_primary;
+  color: colors.$text_primary;
 }
-
-
 
 .stepContent p:last-of-type {
   padding: 0px 50px 49px 54px;
@@ -58,5 +58,5 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
-  color:colors.$text_hint;
+  color: colors.$text_hint;
 }
