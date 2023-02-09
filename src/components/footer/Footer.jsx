@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 import Logo from "../logo/Logo";
 
-export default function Copyright() {
+export default function Footer() {
   return (
     <footer className={classNames(styles.footerWrapper)}>
       <Container className={classNames(styles.container)} maxWidth="lg">
