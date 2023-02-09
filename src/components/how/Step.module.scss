@@ -1,0 +1,54 @@
+@use "../../styles/colors.scss";
+
+.stepWrapper {
+  width: 580px;
+  height: 215px;
+  display: flex;
+  margin: 30px 0;
+}
+
+.stepP {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: colors.$primary_main;
+  flex-basis: 30%;
+  border-radius: 15px 0 0 15px ;
+}
+
+.stepP p {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 100.333px;
+  line-height: 215px;
+}
+
+.stepContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: colors.$background_paper;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  border-radius: 0px 15px 15px 0;
+  flex-basis: 70%;
+}
+
+.stepContent p:first-of-type {
+  margin: 0;
+  padding: 50px 50px 0 54px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  text-transform: uppercase;
+}
+
+.stepContent p:last-of-type {
+  padding: 0px 50px 49px 54px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+}

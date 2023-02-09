@@ -4,7 +4,9 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Link from "../../src/components/link/Link";
 import Header from "../../src/components/header/Header";
-import Footer from '../../src/components/footer/Footer'
+import Step from "../../src/components/how/Step";
+import How from "../../src/components/how/How";
+
 
 
 export default function About() {
@@ -18,11 +20,10 @@ export default function About() {
             <Button variant="contained" component={Link} noLinkStyle href="/">
               🏠 Home
             </Button>
-           
           </Grid>
         </Grid>
       </Container>
-      <Footer />
+      <How />
     </>
   );
 }

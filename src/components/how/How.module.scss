@@ -1,0 +1,46 @@
+@use "../../styles/colors.scss";
+
+.howContainer {
+  background-color: colors.$primary_main;
+  width: 100%;
+  height: 639px;
+}
+
+.howLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 547px;
+}
+
+.howLeftContent{
+    position: relative;
+    top: -65px;
+}
+
+.howLeftContent h2 {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 73px;
+  color: colors.$text_primary;
+  margin: 0;
+}
+
+.howLeftContent p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: colors.$text_secondary;
+  margin-bottom: 45px;
+}
+
+.howRightContent{
+    position: relative;
+    top: -65px;
+}
+
+
+
+
