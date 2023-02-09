@@ -1,6 +1,6 @@
 import Container from "@mui/material/Container";
-import Grid from "@mui/material";
-import Button from "@mui/material";
+import {Grid} from "@mui/material";
+import {Button} from "@mui/material";
 
 import styles from "./Footer.module.scss";
 import classNames from "classnames";
