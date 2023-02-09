@@ -23,6 +23,7 @@ export default function About() {
           </Grid>
         </Grid>
       </Container>
+      <Step />
       <How />
     </>
   );
