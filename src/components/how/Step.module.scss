@@ -25,8 +25,7 @@
 }
 
 .stepNumber{
-  background-color: colors.$primary_main;
-  background-color: colors.$step_color;
+  background-color: rgba(colors.$primary_main, 0.1);
   width: 100%;
   text-align: center;
 }
