@@ -8,7 +8,8 @@ import Step from "../../src/components/how/Step";
 import How from "../../src/components/how/How";
 import Featured  from "../../src/components/Featured/Featured";
 import Collector from "../../src/components/collectors/Collector";
-import CollectorsColumn from "../../src/components/collectors/CollectorsColumn";
+import CollectorColumn from '../../src/components/collectors/CollectorColumn'
+
 
 
 
@@ -27,7 +28,7 @@ export default function About() {
         </Grid>
       </Container>
     <Featured />
-    <CollectorsColumn />
+    <CollectorColumn />
     </>
   );
 }
