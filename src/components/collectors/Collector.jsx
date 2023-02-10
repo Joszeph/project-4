@@ -1,23 +1,37 @@
-import styles from './Collector.module.scss'
+import styles from "./Collector.module.scss";
 import classNames from "classnames";
-import User from '../../components/user/User'
+import User from "../../components/user/User";
 
-
-export default function Collector({name="test", avatar,verified=true, type, number =1,   nftsCount = "10", id   }) {
+export default function Collector({
+  name = "Test",
+  avatar,
+  verified =true,
+  type,
+  number = 1,
+  nftsCount = 20,
+  id = 1,
+}) {
   return (
-    <div className={classNames(styles.container, type === 'light' ? styles.light : null)}>
+    <div
+      className={classNames(
+        styles.container,
+        type === "light" ? styles.light : null
+      )}
+    >
       <div className={classNames(styles.stepWrapper)}>
-      <div className={classNames(styles.stepP)}>
-        <p className={classNames(styles.stepNumber)}>{number}</p>
-      </div>
-      <div className={classNames(styles.stepContent)}>
-        <User name={name}
+        <div className={classNames(styles.stepP)}>
+          <p className={classNames(styles.stepNumber)}>{number}</p>
+        </div>
+        <div className={classNames(styles.stepContent)}>
+          <User
+            name={name}
             info={nftsCount}
             avatar={avatar}
             verified={verified}
-            id={id}/>
+            id={id}
+          />
+        </div>
       </div>
     </div>
-    </div>
-  )
+  );
 }

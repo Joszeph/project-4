@@ -6,6 +6,7 @@ export default function CollectorsColumn({ items = [] }) {
   return (
     <div>
       {items.map((item, i) => (
+        <div key={item.id}>
         <Collector
           key={item.id}
           name={item.name}
@@ -16,6 +17,7 @@ export default function CollectorsColumn({ items = [] }) {
           number={item.number}
           type={i === 0 ? "light" : "dark"}
         />
+        </div>
       ))}
     </div>
   );
