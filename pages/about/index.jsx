@@ -6,6 +6,7 @@ import Link from "../../src/components/link/Link";
 import Header from "../../src/components/header/Header";
 import Step from "../../src/components/how/Step";
 import How from "../../src/components/how/How";
+import Featured  from "../../src/components/Featured/Featured";
 
 
 
@@ -23,8 +24,7 @@ export default function About() {
           </Grid>
         </Grid>
       </Container>
-      <Step />
-      <How />
+    <Featured />
     </>
   );
 }

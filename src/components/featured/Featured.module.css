@@ -1,0 +1,15 @@
+
+.bigImage{
+    width: 699px!important;
+    height: 482px!important;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.smallImage{
+    width: 222px!important;
+    height: 226px!important;
+    display: grid;  
+    border-radius: 15px;
+    cursor: pointer;
+}
