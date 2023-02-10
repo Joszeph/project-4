@@ -9,7 +9,7 @@ import styles from "./Auctions.module.scss";
 export default function Auctions({ cards = [] }) {
   return (
     <div>
-      <Container maxWidth>
+      <Container >
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <h1 className={classNames(styles.header)}>🔥 Live Auctions</h1>
           <Select

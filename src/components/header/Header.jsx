@@ -9,7 +9,7 @@ import styles from "./Header.module.scss";
 export default function Header() {
   return (
     <div>
-      <Container className={classNames(styles.container)} maxWidth>
+      <Container className={classNames(styles.container)} >
         <Grid container alignItems="center" justifyContent="space-evenly">
           <Grid item>
             <Logo type="default" />

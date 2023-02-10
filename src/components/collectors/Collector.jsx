@@ -3,13 +3,13 @@ import classNames from "classnames";
 import User from "../../components/user/User";
 
 export default function Collector({
-  name = "Test",
+  name,
   avatar,
-  verified =true,
+  verified,
   type,
-  number = 1,
-  nftsCount = 20,
-  id = 1,
+  number,
+  nftsCount,
+  id,
 }) {
   return (
     <div

@@ -9,7 +9,7 @@ import styles from "./Trending.module.scss";
 export default function Trending({ cards = [] }) {
   return (
    <div>
-     <Container maxWidth>
+     <Container>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <h1 className={classNames(styles.header)}>Trending</h1>
         <Select

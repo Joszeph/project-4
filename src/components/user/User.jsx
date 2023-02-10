@@ -3,11 +3,11 @@ import classNames from "classnames";
 import styles from './User.module.scss'
 
 export default function User({
-  name = "",
-  info = "",
-  avatar = "",
+  name,
+  info,
+  avatar,
   size = 55,
-  verified = false,
+  verified,
 }) {
   return (
     <div className={classNames(styles.user)}>
