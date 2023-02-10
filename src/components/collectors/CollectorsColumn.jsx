@@ -3,31 +3,7 @@ import classNames from "classnames";
 
 import Collector from "./Collector";
 
-export default function CollectorsColumn({
-  items = [
-    {
-      name: "test",
-      nftsCount: 20,
-      avatar: "",
-      verified: true,
-      id: 1,
-    },
-    {
-      name: "String",
-      nftsCount: 220,
-      avatar: "",
-      verified: false,
-      id: 2,
-    },
-    {
-      name: "test",
-      nftsCount: 204,
-      avatar: "",
-      verified: true,
-      id: 3,
-    },
-  ],
-}) {
+export default function CollectorsColumn({ items = [] }) {
   return (
     <div className={classNames(styles.container)}>
       {items.map((item, i) => (
