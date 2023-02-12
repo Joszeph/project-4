@@ -28,7 +28,7 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <div>
       <Header />
       <Featured items={featuredCards} />
       <Trending cards={trendingCards}/>
@@ -36,7 +36,7 @@ const Home = () => {
       <How />
       <Auctions cards={auctionNfts}/>
       <Footer />
-    </>
+    </div>
   );
 };
 
