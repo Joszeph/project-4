@@ -1,5 +1,5 @@
 import Example from "../src/components/example/Example";
-import Home from "./home/Home";
+import Home from "./home";
 
 import dataFeatured from "../data/featured.json";
 import dataTrending from "../data/trending.json";
