@@ -6,10 +6,10 @@ import styles from "./How.module.scss";
 import Step from "./Step";
 
 export default function How({
-  description,
-  title,
+  description='',
+  title='',
   items = [],
-  link
+  link=''
 }) {
   return (
     <section className={classNames(styles.howContainer)}>

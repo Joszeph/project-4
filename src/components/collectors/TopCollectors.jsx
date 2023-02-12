@@ -7,9 +7,7 @@ import chunk from "lodash.chunk";
 
 import CollectorColumn from "./CollectorColumn";
 
-export default function TopCollectors({
-  collectors = []
-}) {
+export default function TopCollectors({collectors = []}) {
 
   const chunkCollectors = chunk(
     collectors.map((collector, index) => ({ ...collector, id: index + 1 })),3

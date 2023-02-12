@@ -10,7 +10,7 @@ import Footer from "../../src/components/footer/Footer";
 
 
 
-const Home = ({dataFeatured, dataTrending, dataUsers, dataNfts}) => {
+export default function Home({dataFeatured, dataTrending, dataUsers, dataNfts}){
 
   const [featuredCards, setFeaturedCards] = useState([]);
   const [trendingCards, setTrendingCards] = useState([]);
@@ -37,4 +37,4 @@ const Home = ({dataFeatured, dataTrending, dataUsers, dataNfts}) => {
   );
 };
 
-export default Home;
+
