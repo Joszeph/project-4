@@ -9,6 +9,7 @@ import How from "../../src/components/how/How";
 import Featured  from "../../src/components/Featured/Featured";
 import Collector from "../../src/components/collectors/Collector";
 import CollectorColumn from '../../src/components/collectors/CollectorColumn'
+import TopCollectors from "../../src/components/collectors/TopCollectors";
 
 
 
@@ -27,8 +28,9 @@ export default function About() {
           </Grid>
         </Grid>
       </Container>
-    <Featured />
-    <CollectorColumn />
+      <TopCollectors />
+
+
     </>
   );
 }

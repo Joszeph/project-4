@@ -1,20 +1,13 @@
-import Countdown,{ zeroPad } from 'react-countdown';
+import Countdown, { zeroPad } from "react-countdown";
 import classNames from "classnames";
-import {
-  Card as MuiCard,
-  Chip,
-  CardContent,
-  Typography
-} from "@mui/material";
+import { Card as MuiCard, Chip, CardContent, Typography } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
 import millify from "millify";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import styles from "./Card.module.scss";
 
-
 import Avatar from "../../components/avatar/Avatar";
-
 
 export default function Card({
   name = "",
@@ -23,16 +16,16 @@ export default function Card({
   user = { avatar: { url: "" }, verified: false },
   price = "",
   currency = "",
-  timeLeft 
+  timeLeft,
 }) {
   const likesMilified = millify(likes);
 
   const badge = (
     <div className={classNames(styles.badge)}>
-      <CircleIcon fontSize='11px'/>
+      <CircleIcon fontSize="11px" />
       <p className={classNames(styles.badgeText)}>LIVE</p>
     </div>
-  )
+  );
 
   const countdown = ({ hours, minutes, seconds }) => (
     <div className={classNames(styles.countdown)}>
@@ -41,18 +34,27 @@ export default function Card({
   );
 
   return (
-  
-    <MuiCard className={classNames(styles.card, timeLeft  ?
-      styles.cardLive : styles.card
-      )}>
+    <MuiCard
+      className={classNames(
+        styles.card,
+        timeLeft ? styles.cardLive : styles.card
+      )}
+    >
       <div className={classNames(styles.avatarHolder)}>
-      <Avatar src={user.avatar.url} size="33" verified={user.verified} badgeSize="15.55"/>
+        <Avatar
+          src={user.avatar.url}
+          size="33"
+          verified={user.verified}
+          badgeSize="15.55"
+        />
       </div>
-     <div className={classNames(styles.imageHolder)}>
-      {timeLeft && badge}
-     <img src={mediaUrl} className={classNames(styles.media)} alt="" />
-     {timeLeft && <Countdown date={Date.now() + timeLeft} renderer={countdown}/>}
-     </div>
+      <div className={classNames(styles.imageHolder)}>
+        {timeLeft && badge}
+        <img src={mediaUrl} className={classNames(styles.media)} alt="" />
+        {timeLeft && (
+          <Countdown date={Date.now() + timeLeft} renderer={countdown} />
+        )}
+      </div>
       <CardContent className={classNames(styles.titles)}>
         <div>
           <Typography
