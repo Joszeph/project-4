@@ -10,12 +10,12 @@ import styles from "./Card.module.scss";
 import Avatar from "../../components/avatar/Avatar";
 
 export default function Card({
-  name = "",
-  likes = 0,
+  name ,
+  likes,
   mediaUrl = "/images/nft.jpg",
   user = { avatar: { url: "" }, verified: false },
-  price = "",
-  currency = "",
+  price ,
+  currency ,
   timeLeft,
 }) {
   const likesMilified = millify(likes);

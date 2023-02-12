@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import styles from './Step.module.scss'
 
-export default function Step({ number, title = "", description = "" }) {
+export default function Step({ number, title, description }) {
   return (
     <div className={classNames(styles.stepWrapper)}>
       <div className={classNames(styles.stepP)}>

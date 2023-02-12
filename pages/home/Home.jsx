@@ -8,12 +8,9 @@ import Trending from "../../src/components/trending/Trending";
 import Auctions from "../../src/components/auctions/Auctions";
 import Footer from "../../src/components/footer/Footer";
 
-import dataFeatured from "../../data/featured.json";
-import dataTrending from "../../data/trending.json";
-import dataUsers from "../../data/users.json";
-import dataNfts from "../../data/nfts.json";
 
-const Home = () => {
+
+const Home = ({dataFeatured, dataTrending, dataUsers, dataNfts}) => {
 
   const [featuredCards, setFeaturedCards] = useState([]);
   const [trendingCards, setTrendingCards] = useState([]);
