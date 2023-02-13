@@ -10,6 +10,7 @@ import Featured  from "../../src/components/Featured/Featured";
 import Collector from "../../src/components/collectors/Collector";
 import CollectorColumn from '../../src/components/collectors/CollectorColumn'
 import TopCollectors from "../../src/components/collectors/TopCollectors";
+import ProductInfoCreator from "../../src/components/product/ProductInfoCreator";
 
 
 
@@ -29,6 +30,7 @@ export default function About() {
         </Grid>
       </Container>
       <TopCollectors />
+
 
 
     </>

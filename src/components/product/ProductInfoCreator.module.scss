@@ -1,0 +1,25 @@
+@use "../../styles/colors.scss";
+
+.product-info-creator {
+  background-color: colors.$background_paper;
+  height: 118px;
+  width: 340px;
+  border-radius: 15px;
+}
+
+.user-container {
+    height: 118px;
+    width: 340px;
+}
+
+.title {
+  height: 37px;
+  background-color: rgba(colors.$primary_main, 0.25);
+  border-radius: 15px 15px 0 0;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 22px;
+  color: colors.$text_secondary;
+  padding:10px 0 5px 27px;
+}
