@@ -10,7 +10,7 @@ import CollectorColumn from "./CollectorColumn";
 export default function TopCollectors({collectors = []}) {
 
   const chunkCollectors = chunk(
-    collectors.map((collector, index) => ({ ...collector, id: index + 1 })),3
+    collectors.map((collector, index) => ({ ...collector, id: index + 1, key: index + 1 })),3
   );
 
   console.log(chunkCollectors);
