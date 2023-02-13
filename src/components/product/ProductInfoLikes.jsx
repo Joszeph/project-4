@@ -1,24 +1,22 @@
 import * as React from "react";
 import classNames from "classnames";
 import styles from "./ProductInfoLikes.module.scss";
-import { Chip } from "@mui/material";
 
 import millify from "millify";
 
-export default function ProductInfoLikes({ amount = 0 }) {
-    
-  const likesMilified = millify(amount);
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Chip } from "@mui/material";
 
+export default function ProductInfoLikes({ amount = 0 }) {
   return (
     <div className={classNames(styles["product-info-likes"])}>
       <Chip
-        label={likesMilified}
-        variant="outlined"
         color="secondary"
-        size="small"
-        icon={<FavoriteIcon />}
         className={classNames(styles.likes)}
-      />
+        variant="outlined"
+        icon={<FavoriteIcon></FavoriteIcon>}
+        label={millify(amount)}
+      ></Chip>
     </div>
   );
 }
