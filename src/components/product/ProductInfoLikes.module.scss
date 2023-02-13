@@ -1,0 +1,12 @@
+@use "../../styles/colors.scss";
+
+.likes {
+  color: colors.$secondary_main !important;
+}
+
+.product-info-likes {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14.0752px;
+  line-height: 17px;
+}
