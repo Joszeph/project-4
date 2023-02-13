@@ -1,5 +1,5 @@
 import { useRouter } from "next/dist/client/router";
-import { useEffect, useState } from "react";
+
 
 import styles from "./Featured.module.scss";
 import classNames from "classnames";

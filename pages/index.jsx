@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 
 import TopCollectors from "../src/components/collectors/TopCollectors";
-import Featured from "../src/components/Featured/Featured";
+import Featured from "../src/components/featured/Featured";
 import Header from "../src/components/header/Header";
 import How from "../src/components/how/How";
 import Trending from "../src/components/trending/Trending";

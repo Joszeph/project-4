@@ -32,7 +32,7 @@ export default function TopCollectors({collectors = []}) {
         </Box>
         <Grid container spacing={2}>
           {chunkCollectors.map((chunkCollector, index) => (
-            <Grid item xs={3} id={index}>
+            <Grid item xs={3} id={index} key={index}>
               <CollectorColumn items={chunkCollector}/>
             </Grid>
           ))}
