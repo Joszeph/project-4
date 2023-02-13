@@ -1,0 +1,11 @@
+@use '../../styles/colors.scss';
+
+.product-info-price {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  text-transform: uppercase;
+  color: colors.$text_primary;
+}
