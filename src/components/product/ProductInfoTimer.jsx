@@ -4,30 +4,41 @@ import styles from "./ProductInfoTimer.module.scss";
 import Countdown from "react-countdown";
 
 export default function ProductInfoTimer({ timeEnd, onTimeEnd }) {
-  const countDown = timeEnd ? (
-    <Countdown date={Date.now() + timeEnd} onComplete={onTimeEnd} />
-  ) : null;
+
+  const countDownTimer = timeEnd ? (
+    <Countdown
+      date={timeEnd}
+      onComplete={onTimeEnd}
+      renderer={(props) => (
+        <div className={classNames(styles.count)}>
+          {props.formatted.hours +
+            ":" +
+            props.formatted.minutes +
+            ":" +
+            props.formatted.seconds}
+        </div>
+      )}
+    />
+  ) : (
+    null
+  );
 
   return (
     <div className={classNames(styles["product-info-timer"])}>
-      {timeEnd && (
-        <Grid container>
-          <Grid item xs={12} className={classNames(styles["title-container"])}>
-            <Typography variant="h4" className={classNames(styles["title"])}>
-              ends in
-            </Typography>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            className={classNames({
-              [styles["timer"]]: true,
-              [styles["active"]]: timeEnd ? true : false,
-            })}
-          >
-            {countDown}
-          </Grid>
-        </Grid>
+      {timeEnd ? (
+        <myModule.Card
+          className={classNames(styles["product-info-timer-card"])}
+        >
+          <Typography className={classNames(styles.title)} component="div">
+            Ends in
+          </Typography>
+
+          <div className={classNames([styles["timer"], styles["active"]])}>
+            {countDownTimer}
+          </div>
+        </myModule.Card>
+      ) : (
+        ""
       )}
     </div>
   );
