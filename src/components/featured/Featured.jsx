@@ -28,7 +28,7 @@ export default function Featured({ items = [] }) {
                     ? classNames(styles.bigImage)
                     : classNames(styles.smallImage)
                 }
-                src={item.image}
+                src={item?.image}
                 alt={item.title}
                 onClick={() => handleClick(index)}
               />

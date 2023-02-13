@@ -1,3 +1,4 @@
+import * as React from 'react';
 import styles from './ProductImage.module.scss'
 import classNames from "classnames";
 
