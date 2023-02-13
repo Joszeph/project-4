@@ -11,6 +11,7 @@ import Collector from "../../src/components/collectors/Collector";
 import CollectorColumn from '../../src/components/collectors/CollectorColumn'
 import TopCollectors from "../../src/components/collectors/TopCollectors";
 import ProductInfoCreator from "../../src/components/product/ProductInfoCreator";
+import ProductInfoTimer from "../../src/components/product/ProductInfoTimer";
 
 
 
@@ -30,6 +31,7 @@ export default function About() {
         </Grid>
       </Container>
       <TopCollectors />
+      <ProductInfoTimer />
 
 
 
