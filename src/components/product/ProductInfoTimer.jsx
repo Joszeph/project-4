@@ -1,9 +1,14 @@
-import * as React from "react";
+import * as React from 'react';
 import classNames from "classnames";
 import styles from "./ProductInfoTimer.module.scss";
-import Countdown from "react-countdown";
 
-export default function ProductInfoTimer({ timeEnd, onTimeEnd }) {
+import * as myModule from "@mui/material";
+
+import Countdown from 'react-countdown';
+
+import  Typography  from '@mui/material/Typography';
+
+export default function ProductInfoTimer({onTimeEnd,timeEnd}) {
 
   const countDownTimer = timeEnd ? (
     <Countdown
@@ -33,7 +38,7 @@ export default function ProductInfoTimer({ timeEnd, onTimeEnd }) {
             Ends in
           </Typography>
 
-          <div className={classNames([styles["timer"], styles["active"]])}>
+          <div className={classNames([styles.timer , styles.active])}>
             {countDownTimer}
           </div>
         </myModule.Card>

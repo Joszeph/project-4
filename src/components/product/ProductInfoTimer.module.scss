@@ -1,37 +1,33 @@
-@use "../../styles/colors";
+@use "../../styles/colors.scss";
 
-.product-info-timer{
-    min-height:100px;
-    max-width: 300px;
-     
+.product-info-timer {
+  min-height: 100px;
+  max-width: 300px;
 }
-.product-info-timer-card{
-    font-weight: bold;
-    border-radius: 30px;
-    min-height:100px;
-    max-width: 300px;
-
+.product-info-timer-card {
+  font-weight: bold;
+  border-radius: 30px;
+  min-height: 100px;
+  max-width: 300px;
 }
-.title{
-    font-weight: bold;
-    font-size: 30px;
-    background-color:rgba(colors.$secondary_main,0.7);
-    height:20%;
-    color: black;
-    text-align: center;
-
+.title {
+  font-weight: bold;
+  font-size: 30px;
+  background-color: rgba(colors.$secondary_main, 0.7);
+  height: 20%;
+  color: black;
+  text-align: center;
 }
-.timer{
-    background-color: colors.$secondary_main;
-    min-height: 100px;
-    
+.timer {
+  background-color: colors.$secondary_main;
+  min-height: 100px;
 }
-.count{
-    text-align: center;
-    font-size: 38px;
-    color: colors.$background_default;
-    font-weight: bold;
+.count {
+  text-align: center;
+  font-size: 38px;
+  color: colors.$background_default;
+  font-weight: bold;
 }
-.active{
-    background-color: colors.$secondary_main;
+.active {
+  background-color: colors.$secondary_main;
 }
