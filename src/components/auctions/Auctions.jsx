@@ -27,7 +27,7 @@ export default function Auctions({ cards = [] }) {
             <Grid item xs={3} key={card.name}>
               <Card
                 name={card.name}
-                likes={2300}
+                likes={card.likes}
                 mediaUrl={card.mediaUrl}
                 user={card.user}
                 price={card.price}
