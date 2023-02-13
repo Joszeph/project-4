@@ -1,11 +1,9 @@
-.title {
-    font-weight: 900;
-    font-size: 60px;
-    line-height: 73px;
-    text-align: center;
-    color: #ffffff;
-}
+@use "../../styles/colors";
 
-.product-info-title {
-    width: 340px;
+.product-info-title{
+    font-weight: bold;
+  
+}
+.title{  
+    color: colors.$text_primary;
 }
