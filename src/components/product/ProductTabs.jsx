@@ -35,10 +35,10 @@ export default function ProductTabs({ text = "", bids = [] }) {
             />
           </TabList>
         </Box>
-        <TabPanel value="1" className={classNames(styles["tab-details"])}>
+        <TabPanel value="1">
           <p>{text}</p>
         </TabPanel>
-        <TabPanel value="2" className={classNames(styles["tab-bids"])}>
+        <TabPanel value="2">
           {bids.map((bid, index) => (
             <TableRow
               className={classNames(
