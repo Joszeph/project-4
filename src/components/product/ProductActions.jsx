@@ -3,7 +3,7 @@ import * as React from "react";
 import classNames from "classnames";
 import styles from "./ProductActions.module.scss";
 
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, Box } from "@mui/material";
 
 export default function ProductActions({
   isLive = false,
@@ -14,7 +14,7 @@ export default function ProductActions({
   onBid,
 }) {
   return (
-    <div className={classNames(styles["product-action"])} >
+    <Box component="div" className={classNames(styles["product-actions"])} >
       <Grid container spacing={2}>
         <Grid item xs={7}>
           <Button
@@ -40,6 +40,6 @@ export default function ProductActions({
           </Button>
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 }
