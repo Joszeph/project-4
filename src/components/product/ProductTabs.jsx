@@ -1,24 +1,34 @@
 import * as React from "react";
+import { useState } from "react";
 
 import classNames from "classnames";
 import styles from "./ProductTabs.module.scss";
 
 import User from "../user/User";
 
-import { TabContext, TabPanel } from "@mui/lab";
+import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { Box, Tab, TableCell, TableRow } from "@mui/material";
 
 export default function ProductTabs({ text = "", bids = [] }) {
+
+const [value, setValue] = useState('1')
+
+const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <div className={classNames(styles["product-tabs"])}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-          <Tab
+         <TabList onChange={handleChange}>
+         <Tab
             label="Details"
             value="1"
             className={classNames(styles.detailsTab)}
           />
           <Tab label="Bids" value="2" className={classNames(styles.bidsTab)} />
+         </TabList>
         </Box>
         <TabPanel value="1">
           <p>{text}</p>
