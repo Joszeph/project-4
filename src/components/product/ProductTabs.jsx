@@ -27,9 +27,9 @@ const handleChange = (event, newValue) => {
          <Tab
             label="Details"
             value="1"
-            className={classNames(styles.detailsTab)}
+            className={classNames(styles.details)}
           />
-          <Tab label="Bids" value="2" className={classNames(styles.bidsTab)} />
+          <Tab label="Bids" value="2" className={classNames(styles.bids)} />
          </TabList>
         </Box>
         <TabPanel value="1">
