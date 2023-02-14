@@ -18,3 +18,12 @@
   color: colors.$secondary_main;
 }
 
+.tab-details,
+.tab-bids {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: uppercase;
+  color: colors.$text_secondary;
+}
