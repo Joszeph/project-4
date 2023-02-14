@@ -9,10 +9,9 @@ import User from "../user/User";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { Box, Tab, TableCell, TableRow } from "@mui/material";
 
-import formatDistance from 'date-fns'
-import parseISO from 'date-fns'
+import {parseISO, formatDistance} from 'date-fns';
 
-export default function ProductTabs({ text = "", bids = [] }) {
+export default function ProductTabs({ text="", bids = [] }) {
 
 const [value, setValue] = useState('1')
 
