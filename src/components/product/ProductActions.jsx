@@ -24,7 +24,7 @@ export default function ProductActions({
             variant="contained"
             className={classNames(styles["button"])}
           >
-            BUY FOR {buyAmount} {currency}
+           {`BUY FOR ${buyAmount} ${currency}`}
           </Button>
         </Grid>
         <Grid item xs={5}>
@@ -34,9 +34,9 @@ export default function ProductActions({
             onClick={onBid}
             variant="outlined"
             color="success"
-            className="button"
+            className={classNames(styles["button"])}
           >
-            PLACE BID FOR {bidAmount} {currency}
+            {`PLACE BID FOR ${bidAmount} ${currency}`}
           </Button>
         </Grid>
       </Grid>
