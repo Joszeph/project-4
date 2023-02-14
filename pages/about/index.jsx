@@ -4,22 +4,11 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Link from "../../src/components/link/Link";
 import Header from "../../src/components/header/Header";
-import Step from "../../src/components/how/Step";
-import How from "../../src/components/how/How";
-import Featured  from "../../src/components/Featured/Featured";
-import Collector from "../../src/components/collectors/Collector";
-import CollectorColumn from '../../src/components/collectors/CollectorColumn'
-import TopCollectors from "../../src/components/collectors/TopCollectors";
-import ProductInfoCreator from "../../src/components/product/ProductInfoCreator";
-import ProductInfoTimer from "../../src/components/product/ProductInfoTimer";
-
-
-
+import ProductInfo from "../../src/components/product/ProductInfo";
 
 export default function About() {
   return (
     <>
-
       <Header />
       <Container maxWidth="xl">
         <Grid container justifyContent="center">
@@ -30,11 +19,8 @@ export default function About() {
           </Grid>
         </Grid>
       </Container>
-      <TopCollectors />
-      <ProductInfoTimer />
 
-
-
+      <ProductInfo />
     </>
   );
 }
