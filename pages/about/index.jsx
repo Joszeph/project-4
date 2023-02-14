@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import Link from "../../src/components/link/Link";
 import Header from "../../src/components/header/Header";
 import ProductTabs from "../../src/components/product/ProductTabs";
+import ProductActions from "../../src/components/product/ProductActions";
 
 
 export default function About() {
@@ -21,7 +22,7 @@ export default function About() {
         </Grid>
       </Container>
     <ProductTabs />
-
+    <ProductActions />
     </>
   );
 }
