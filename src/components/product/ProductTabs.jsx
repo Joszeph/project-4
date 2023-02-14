@@ -9,6 +9,9 @@ import User from "../user/User";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { Box, Tab, TableCell, TableRow } from "@mui/material";
 
+import formatDistance from 'date-fns'
+import parseISO from 'date-fns'
+
 export default function ProductTabs({ text = "", bids = [] }) {
 
 const [value, setValue] = useState('1')
@@ -47,7 +50,7 @@ const handleChange = (event, newValue) => {
                   name={bid.user.name}
                   avatar={bid.user.avatar}
                   verified={bid.user.verified}
-                ></User>
+                />
               </TableCell>
               <TableCell
                 align="center"
