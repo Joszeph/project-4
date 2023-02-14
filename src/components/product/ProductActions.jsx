@@ -14,7 +14,7 @@ export default function ProductActions({
   onBid,
 }) {
   return (
-    <div className={classNames(styles["product-actions"])}>
+    <div className={classNames(styles["product-action"])} >
       <Grid container spacing={2}>
         <Grid item xs={7}>
           <Button
