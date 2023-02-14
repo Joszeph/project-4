@@ -9,13 +9,12 @@ import User from "../user/User";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { Box, Tab, TableCell, TableRow } from "@mui/material";
 
-import {parseISO, formatDistance} from 'date-fns';
+import { parseISO, formatDistance } from "date-fns";
 
-export default function ProductTabs({ text="", bids = [] }) {
+export default function ProductTabs({ text = "", bids = [] }) {
+  const [value, setValue] = useState("1");
 
-const [value, setValue] = useState('1')
-
-const handleChange = (event, newValue) => {
+  const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
@@ -23,19 +22,23 @@ const handleChange = (event, newValue) => {
     <div className={classNames(styles["product-tabs"])}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-         <TabList onChange={handleChange}>
-         <Tab
-            label="Details"
-            value="1"
-            className={classNames(styles['tab-details'])}
-          />
-          <Tab label="Bids" value="2" className={classNames(styles['tab-bids'])} />
-         </TabList>
+          <TabList onChange={handleChange}>
+            <Tab
+              label="Details"
+              value="1"
+              className={classNames(styles["tab-details"])}
+            />
+            <Tab
+              label="Bids"
+              value="2"
+              className={classNames(styles["tab-bids"])}
+            />
+          </TabList>
         </Box>
-        <TabPanel value="1">
+        <TabPanel value="1" className={classNames(styles["tab-details"])}>
           <p>{text}</p>
         </TabPanel>
-        <TabPanel value="2">
+        <TabPanel value="2" className={classNames(styles["tab-bids"])}>
           {bids.map((bid, index) => (
             <TableRow
               className={classNames(
