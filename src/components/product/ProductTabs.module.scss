@@ -1,0 +1,19 @@
+@use "../../styles/colors";
+
+.product-tabs {
+  background-color: colors.$background_default;
+  max-width: 600px;
+  min-height: 300px;
+}
+
+.light {
+  background-color: rgba(colors.$background_paper, 20%);
+}
+
+.dark {
+  background-color: rgba(colors.$background_paper, 75%);
+}
+
+.amount {
+  color: colors.$secondary_main;
+}

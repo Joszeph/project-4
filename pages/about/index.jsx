@@ -4,7 +4,8 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Link from "../../src/components/link/Link";
 import Header from "../../src/components/header/Header";
-import ProductInfo from "../../src/components/product/ProductInfo";
+import ProductTabs from "../../src/components/product/ProductTabs";
+
 
 export default function About() {
   return (
@@ -19,8 +20,8 @@ export default function About() {
           </Grid>
         </Grid>
       </Container>
+    <ProductTabs />
 
-      <ProductInfo />
     </>
   );
 }
