@@ -23,8 +23,7 @@ export default function ProductContainer({
 }) {
   return (
     <div className={classNames(styles["product-container"])}>
-      <Container>
-        <Box>
+ 
           <Grid
             container
             direction="row"
@@ -69,8 +68,7 @@ export default function ProductContainer({
               </Item>
             </Grid>
           </Grid>
-        </Box>
-      </Container>
+
     </div>
   );
 }
