@@ -3,12 +3,13 @@ import * as React from "react";
 import classNames from "classnames";
 import styles from "./ProductContainer.module.scss";
 
-import { Grid, Box } from "@mui/material";
+import  Grid  from "@mui/material/Grid/";
+import  Box  from "@mui/material/Box";
 
-import ProductActions from "./ProductActions";
-import ProductImage from "./ProductImage";
-import ProductInfo from "./ProductInfo";
-import ProductTabs from "./ProductTabs";
+import ProductImage from './ProductImage'
+import ProductInfo from './ProductInfo'
+import ProductTabs from './ProductTabs'
+import ProductActions from './ProductActions'
 
 export default function ProductContainer({
   name = "",
