@@ -1,46 +1,66 @@
-import styles from "./ProductContainer.module.scss";
-import { Grid, Box, Container } from "@mui/material";
+import * as React from "react";
+
 import classNames from "classnames";
-import React, { useEffect } from "react";
+import styles from "./ProductContainer.module.scss";
+
+import Grid from "@mui/material/Grid";
+
 import ProductImage from "./ProductImage";
-import ProductActions from "./ProductActions";
 import ProductInfo from "./ProductInfo";
+import ProductActions from "./ProductActions";
 import ProductTabs from "./ProductTabs";
 
-export default function ProductContainer({ product }) {
+import { parseISO } from "date-fns";
 
-
+export default function ProductContainer({
+  name = "",
+  owner = { username: "", verified, avatar: { url: "" } },
+  price = 0,
+  currency = "",
+  likes = 0,
+  auction_end = (Date.now() + 1000).toString,
+  details = "",
+  source = { url: "" },
+  bids = [],
+}) {
   return (
-    <Container
-      maxWidth={false}
-      className={classNames(styles["product-container"])}
-    >
-      <Grid container spacing={6}>
-        <Grid item xs={6}>
-          <ProductImage url={product?.source?.url} />
+    <div className={classNames(styles["product-container"])}>
+      <Grid
+        container
+        direction="row"
+        justifyContent="space-evenly"
+        alignItems="stretch"
+        spacing={2}
+      >
+        <Grid item xs="6">
+          <ProductImage url={source.url}></ProductImage>
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs="5">
           <ProductInfo
-            title={product?.name}
-            creator={product?.owner}
-            price={product?.price}
-            currency={product?.currency}
-            likes={product?.likes}
-            timeEnd={product?.auction_end}
-            isLive={product?.auction_end}
-            onTimeEnd={product?.auction_end}
-          />
-          <ProductTabs bids={product?.bids} text={product?.details} />
+            onTimeEnd={() => {}}
+            title={name}
+            creator={{
+              name: owner.username,
+              verified: owner.verified,
+              avatar: owner.avatar.url,
+            }}
+            price={price}
+            currency={currency}
+            likes={likes}
+            timeEnd={parseISO(auction_end)}
+            isLive={parseISO(auction_end) > Date.now()}
+          ></ProductInfo>
+          <ProductTabs text={details} bids={bids}></ProductTabs>
           <ProductActions
-            isLive={product?.auction_end}
-            currency={product?.currency}
-            buyAmount={product?.bids}
-            bidAmount={product?.bids}
-            onBid={product?.bids}
-            onBuy={product?.bids}
-          />
+            onBid={() => {}}
+            onBuy={() => {}}
+            isLive={true}
+            currency={currency}
+            buyAmount={price}
+            bidAmount={5}
+          ></ProductActions>
         </Grid>
       </Grid>
-    </Container>
+    </div>
   );
 }
