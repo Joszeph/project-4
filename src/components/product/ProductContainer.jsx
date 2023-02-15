@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import classNames from "classnames";
-import styles from "./ProductContainer";
+import styles from "./ProductContainer.module.scss";
 
 import { Container, Grid, Box, Item } from "@mui/material";
 
@@ -34,39 +34,39 @@ export default function ProductContainer({
           >
             <Grid item xs={6}>
               <Item>
-              <ProductImage url={product?.source?.url} />
+                <ProductImage url={product?.source?.url} />
               </Item>
             </Grid>
             <Grid item xs={5}>
-      <Item>
-      <ProductInfo
-                title={product?.name}
-                creator={{
-                  name: owner.username,
-                  verified: owner.verified,
-                  avatar: owner.avatar.url,
-                }}
-                price={product?.price}
-                currency={product?.currency}
-                likes={product?.likes}
-                timeEnd={product?.auction_end}
-                isLive={product?.auction_end}
-                onTimeEnd={product?.auction_end}
-              />
-      </Item>
               <Item>
-              <ProductTabs bids={product?.bids} text={product?.details} />
+                <ProductInfo
+                  title={product?.name}
+                  creator={{
+                    name: owner.username,
+                    verified: owner.verified,
+                    avatar: owner.avatar.url,
+                  }}
+                  price={product?.price}
+                  currency={product?.currency}
+                  likes={product?.likes}
+                  timeEnd={product?.auction_end}
+                  isLive={product?.auction_end}
+                  onTimeEnd={product?.auction_end}
+                />
               </Item>
-          <Item>
-          <ProductActions
-                isLive={product?.auction_end}
-                currency={product?.currency}
-                buyAmount={product?.bids}
-                bidAmount={product?.bids}
-                onBid={product?.bids}
-                onBuy={product?.bids}
-              />
-          </Item>
+              <Item>
+                <ProductTabs bids={product?.bids} text={product?.details} />
+              </Item>
+              <Item>
+                <ProductActions
+                  isLive={product?.auction_end}
+                  currency={product?.currency}
+                  buyAmount={product?.bids}
+                  bidAmount={product?.bids}
+                  onBid={product?.bids}
+                  onBuy={product?.bids}
+                />
+              </Item>
             </Grid>
           </Grid>
         </Box>
