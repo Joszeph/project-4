@@ -5,11 +5,13 @@ import styles from "./ProductContainer.module.scss";
 
 import  Grid  from "@mui/material/Grid/";
 import  Box  from "@mui/material/Box";
+import { Container } from "@mui/material";
 
 import ProductImage from './ProductImage'
 import ProductInfo from './ProductInfo'
 import ProductTabs from './ProductTabs'
 import ProductActions from './ProductActions'
+
 
 export default function ProductContainer({
   name = "",
@@ -23,7 +25,7 @@ export default function ProductContainer({
   bids = [],
 }) {
   return (
-    <div className={classNames(styles["product-container"])}>
+    <Container className={classNames(styles["product-container"])}>
       <Box>
         <Grid
           container
@@ -62,6 +64,6 @@ export default function ProductContainer({
           </Grid>
         </Grid>
       </Box>
-    </div>
+    </Container>
   );
 }
