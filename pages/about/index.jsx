@@ -22,7 +22,6 @@ export default function About() {
           </Grid>
         </Grid>
       </Container>
-    <ProductContainer />
     </>
   );
 }
