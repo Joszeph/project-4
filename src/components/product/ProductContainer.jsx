@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import classNames from "classnames";
-import styles from "./ProductContainer.module.scss";
+import styles from "./ProductContainer";
 
 import { Container, Grid, Box, Item } from "@mui/material";
 
