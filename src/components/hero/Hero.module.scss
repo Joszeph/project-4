@@ -1,9 +1,14 @@
 @use "../../styles/colors.scss";
 
+.hero {
+  text-align: center;
+}
+
 .text {
   color: colors.$text_primary;
   font-style: normal;
   font-weight: 900;
   font-size: 60px;
   line-height: 73px;
+  text-transform: uppercase;
 }

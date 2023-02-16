@@ -7,6 +7,7 @@ import Header from "../../src/components/header/Header";
 import ProductTabs from "../../src/components/product/ProductTabs";
 import ProductActions from "../../src/components/product/ProductActions";
 import ProductContainer from "../../src/components/product/ProductContainer";
+import Hero from "../../src/components/hero/Hero";
 
 
 export default function About() {
@@ -22,6 +23,7 @@ export default function About() {
           </Grid>
         </Grid>
       </Container>
+      <Hero />
     </>
   );
 }
