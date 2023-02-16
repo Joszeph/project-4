@@ -38,15 +38,25 @@ export default function ProfileCollectionFilters({
       <Stack direction="row" spacing={2} alignItems="center">
         <FormControl>
           <InputLabel id="select-sort-by"></InputLabel>
-          <Select id="select-sort-by" label="sortBy" className={classNames(styles.select)}>
+          <Select
+            id="select-sort-by"
+            label="sortBy"
+            className={classNames(styles.select)}
+          >
             {filters.sort.map((e) => (
-              <MenuItem className={classNames(styles.items)} value={e.value}>{e.label}</MenuItem>
+              <MenuItem className={classNames(styles.items)} value={e.value}>
+                {e.label}
+              </MenuItem>
             ))}
           </Select>
         </FormControl>
         <FormControl>
           <InputLabel id="select-sort-by-price"></InputLabel>
-          <Select id="select-sort-by-price"  label="Price range" className={classNames(styles.select)}>
+          <Select
+            id="select-sort-by-price"
+            label="Price range"
+            className={classNames(styles.select)}
+          >
             {filters.price.map((el) => (
               <MenuItem value={el.value}>{el.label}</MenuItem>
             ))}
