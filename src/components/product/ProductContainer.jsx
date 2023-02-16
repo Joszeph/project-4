@@ -14,7 +14,7 @@ import { parseISO } from "date-fns";
 
 export default function ProductContainer({
   name = "",
-  owner = { username: "", verified, avatar: { url: "" } },
+  owner = { username: "", verified:false, avatar: { url: "" } },
   price = 0,
   currency = "",
   likes = 0,
@@ -33,7 +33,7 @@ export default function ProductContainer({
         spacing={2}
       >
         <Grid item xs="6">
-          <ProductImage url={source.url}></ProductImage>
+          <ProductImage url={source.url}/>
         </Grid>
         <Grid item xs="5">
           <ProductInfo
@@ -49,8 +49,8 @@ export default function ProductContainer({
             likes={likes}
             timeEnd={parseISO(auction_end)}
             isLive={parseISO(auction_end) > Date.now()}
-          ></ProductInfo>
-          <ProductTabs text={details} bids={bids}></ProductTabs>
+          />
+          <ProductTabs text={details} bids={bids}/>
           <ProductActions
             onBid={() => {}}
             onBuy={() => {}}
@@ -58,7 +58,7 @@ export default function ProductContainer({
             currency={currency}
             buyAmount={price}
             bidAmount={5}
-          ></ProductActions>
+          />
         </Grid>
       </Grid>
     </div>
