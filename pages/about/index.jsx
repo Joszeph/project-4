@@ -9,6 +9,7 @@ import ProductActions from "../../src/components/product/ProductActions";
 import ProductContainer from "../../src/components/product/ProductContainer";
 import Hero from "../../src/components/hero/Hero";
 import Description from "../../src/components/description/Description";
+import ProfileCollectionFilters from "../../src/components/profile/ProfileCollectionFilters";
 
 
 export default function About() {
@@ -26,6 +27,7 @@ export default function About() {
       </Container>
       <Hero />
       <Description />
+      <ProfileCollectionFilters />
     </>
   );
 }

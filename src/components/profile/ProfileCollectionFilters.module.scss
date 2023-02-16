@@ -1,0 +1,24 @@
+@use "../../styles/colors.scss";
+
+.select {
+  min-width: 220px;
+  height: 50px;
+  color: colors.$text_primary;
+}
+
+.items {
+  color: colors.$text_primary;
+}
+
+.search {
+  width: 399px;
+  height: 50px;
+  background-color: colors.$background_paper;
+  border-radius: 30%;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  color: colors.$text_primary;
+}
