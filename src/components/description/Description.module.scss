@@ -4,6 +4,8 @@
   max-width: 960px;
   background-color: colors.$background_paper;
   margin: 0 auto;
+  position: relative;
+  top: -180px;
 }
 
 .text {
@@ -16,5 +18,5 @@
 }
 
 .image {
-    margin-top: 61px;
+  margin-top: 61px;
 }
