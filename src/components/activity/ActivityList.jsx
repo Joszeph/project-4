@@ -5,15 +5,16 @@ import styles from "./ActivityList.module.scss";
 
 import ActivityListItem from "./ActivityListItem";
 
-import { Stack } from "@mui/material";
+import Stack from "@mui/material/Stack";
 
-export default function ActivityList({ items=[] }) {
+export default function ActivityList({ items = [] }) {
   return (
     <div className={classNames(styles["activity-list"])}>
       <Stack
         direction="column"
         justifyContent="flex-start"
         alignItems="center"
+        spacing={2}
         className={classNames(styles["activity-item"])}
       >
         {items.map((item) => {
