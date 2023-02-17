@@ -26,7 +26,7 @@ export default function ActivityFilters({ filters = { sort: [], type: [] } }) {
           sx={{ minWidth: 150 }}
         >
           <InputLabel id="sort-by"></InputLabel>
-          <Select value="Sort By" className={classNames(styles.select)}  >
+          <Select value="Sort By" variant="outlined" className={classNames(styles.select)}>
             {filters.sort.map((element) => (
               <MenuItem value={element.value} filter={element.label} />
             ))}
@@ -39,7 +39,7 @@ export default function ActivityFilters({ filters = { sort: [], type: [] } }) {
           sx={{ minWidth: 150 }}
         >
           <InputLabel id="type"></InputLabel>
-          <Select value="Type" className={classNames(styles.select)}>
+          <Select value="Type" variant="outlined" className={classNames(styles.select)}>
             {filters.type.map((element) => (
               <MenuItem value={element.value} filter={element.label} />
             ))}
