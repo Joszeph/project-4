@@ -19,11 +19,12 @@ export default function ActivityList({ items = [] }) {
       >
         {items.map((item) => {
           <ActivityListItem
+            key={index}
             user={item.user}
             created_at={item.created_at}
             nft={item.nft}
             type={item.type}
-          />;
+          />
         })}
       </Stack>
     </div>
