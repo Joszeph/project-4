@@ -10,6 +10,7 @@ import ProductContainer from "../../src/components/product/ProductContainer";
 import Hero from "../../src/components/hero/Hero";
 import Description from "../../src/components/description/Description";
 import ProfileCollection from "../../src/components/profile/ProfileCollection";
+import ActivityFilters from "../../src/components/activity/ActivityFilters";
 
 
 export default function About() {
@@ -25,9 +26,7 @@ export default function About() {
           </Grid>
         </Grid>
       </Container>
-      <Hero />
-      <Description />
-      <ProfileCollection />
+      <ActivityFilters />
     </>
   );
 }
