@@ -11,7 +11,8 @@ export default function ActivityList({ items=[] }) {
   return (
     <div className={classNames(styles["activity-list"])}>
       <Stack
-        direction={{ xs: 'column' }}
+        direction="column"
+        justifyContent="flex-start"
         alignItems="center"
         className={classNames(styles["activity-item"])}
       >
