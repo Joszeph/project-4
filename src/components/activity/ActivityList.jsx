@@ -3,17 +3,17 @@ import React from "react";
 import classNames from "classnames";
 import styles from "./ActivityList.module.scss";
 
-import { Stack } from "@mui/material";
-
 import ActivityListItem from "./ActivityListItem";
+
+import { Stack } from "@mui/material";
 
 export default function ActivityList({ items=[] }) {
   return (
     <div className={classNames(styles["activity-list"])}>
       <Stack
-        className={classNames(styles["activity-item"])}
-        direction="column"
+        direction={{ xs: 'column' }}
         alignItems="center"
+        className={classNames(styles["activity-item"])}
       >
         {items.map((item) => {
           <ActivityListItem
