@@ -1,0 +1,17 @@
+@use '../../styles/colors.scss';
+
+.activity-list-item{
+    display: flex;
+    justify-content: center;
+}
+
+.activity-item{
+    background-color: colors.$background_paper !important;
+    width: 940px;
+    height: 105px;
+    border-radius: 15px;
+}
+
+.avatar{
+    margin: 21px !important;
+}
