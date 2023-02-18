@@ -3,9 +3,10 @@ import React from "react";
 import classNames from "classnames";
 import styles from "./ActivityList.module.scss";
 
-import ActivityListItem from "./ActivityListItem";
+import ActivityListItems from "./ActivityListItem";
+import { Stack } from "@mui/material";
 
-import Stack from "@mui/material/Stack";
+
 
 export default function ActivityList({ items = [] }) {
   return (
@@ -18,7 +19,7 @@ export default function ActivityList({ items = [] }) {
         className={classNames(styles["activity-item"])}
       >
         {items.map((item) => {
-          <ActivityListItem
+          <ActivityListItems
             key={index}
             user={item.user}
             created_at={item.created_at}
