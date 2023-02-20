@@ -14,7 +14,6 @@ export default function ActivityList({ items = [] }) {
         spacing={2}
         justifyContent="flex-start"
         alignItems="center"
-        className={classNames(styles["activity-item"])}
       >
         {items.map((item, index) => {
           return (
