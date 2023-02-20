@@ -5,11 +5,13 @@ import ExploreTitle from "../../src/components/explore/ExploreTitle";
 import ExploreFilters from "../../src/components/explore/ExploreFilters";
 import Footer from "../../src/components/footer/Footer";
 
-import { Card, Container, Grid } from "@mui/material";
+import  Container  from "@mui/material/Container";
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
 
 import nftsDb from "../../data/nfts.json";
 
-export default function Index() {
+export default function Explore() {
   const [nfts, setNfts] = useState([]);
   const [nftFilters, setNftFilters] = useState([]);
   const [sort, setSort] = useState();
@@ -49,7 +51,7 @@ export default function Index() {
   };
 
   return (
-    <>
+    <div>
       <Header />
       <Container maxWidth="xl" sx={{ margin: "10px 0" }}>
         <Grid container>
@@ -83,6 +85,6 @@ export default function Index() {
         </Grid>
       </Container>
       <Footer />
-    </>
+    </div>
   );
 }
