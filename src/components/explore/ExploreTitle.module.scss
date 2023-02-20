@@ -1,0 +1,9 @@
+@use "../../styles/colors.scss";
+
+.explore-title h1 {
+  color: colors.$text_primary;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 60px;
+  line-height: 73px;
+}
