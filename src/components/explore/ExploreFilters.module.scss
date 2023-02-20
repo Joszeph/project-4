@@ -1,0 +1,21 @@
+@use "../../styles/colors.scss";
+
+.explore-filters {
+  margin-bottom: 58px;
+}
+
+.select {
+  border-radius: 30px;
+  height: 50px;
+}
+
+.search {
+  color: colors.$text_primary;
+  background-color: colors.$background_paper;
+  border-radius: 30px;
+  width: 239px;
+}
+
+.icon {
+  color: colors.$text_hint;
+}
