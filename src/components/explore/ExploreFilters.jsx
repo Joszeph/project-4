@@ -1,19 +1,28 @@
+import * as React from "react";
+
 import classNames from "classnames";
 import styles from "./ExploreFilters.module.scss";
 
-import {
-  FormControl,
-  Select,
-  InputLabel,
-  MenuItem,
-  Stack,
-  TextField,
-  InputAdornment,
-  Search,
-} from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 
-export default function ExploreFilters({ filters = [] }) {
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField";
+import InputLabel from "@mui/material/InputLabel";
+import Stack from "@mui/material/Stack";
+import FormControl from "@mui/material/FormControl";
+import InputAdornment from "@mui/material/InputAdornment";
+import Search from "@mui/icons-material/Search";
+
+export default function ExploreFilters({ filters = { sort: [], price: [] } }) {
+  const [sortBy, setSort] = React.useState();
+  const [prices, setPrice] = React.useState();
+
+  const handleSortChange = (event) => {
+    setSort(event.target.value);
+  };
+  const handlePriceChange = (event) => {
+    setPrice(event.target.value);
+  };
   return (
     <div className={classNames(styles["explore-filters"])}>
       <Stack direction="row" spacing={2} alignItems="center">
@@ -25,42 +34,38 @@ export default function ExploreFilters({ filters = [] }) {
         >
           <InputLabel id="sort-label"></InputLabel>
           <Select
+            className={classNames(styles.select)}
             variant="outlined"
             value={sortBy}
+            onChange={handleSortChange}
             labelId="sort-label"
-            className={classNames(styles.select)}
           >
             {filters.sort.map((el) => (
-              <MenuItem value={el.value}>{el.label}</MenuItem>
+              <MenuItem value={el.value}> {el.label} </MenuItem>
             ))}
           </Select>
         </FormControl>
-
-        <FormControl
-          variant="filled"
-          margin="dense"
-          size="small"
-          sx={{ minWidth: 150 }}
-        >
-          <InputLabel id="type-label"></InputLabel>
+        <FormControl variant="filled" size="small" sx={{ minWidth: 150 }}>
+          <InputLabel id="price-label"></InputLabel>
           <Select
-            variant="outlined"
-            value={types}
-            labelId="type-label"
             className={classNames(styles.select)}
+            variant="outlined"
+            value={prices}
+            onChange={handlePriceChange}
+            labelId="price-label"
           >
-            {filters.type.map((el) => (
-              <MenuItem value={el.value}>{el.label}</MenuItem>
+            {filters.price.map((el) => (
+              <MenuItem value={el.value}> {el.label} </MenuItem>
             ))}
           </Select>
         </FormControl>
         <TextField
-          variant="standard"
           className={classNames(styles.search)}
+          variant="standard"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon className={classNames(styles.icon)} />
+                <Search className={classNames(styles.icon)} />
               </InputAdornment>
             ),
           }}
