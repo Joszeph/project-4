@@ -12,7 +12,6 @@ import {
   Search,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { el } from "date-fns/locale";
 
 export default function ExploreFilters({ filters = [] }) {
   return (
@@ -26,10 +25,10 @@ export default function ExploreFilters({ filters = [] }) {
         >
           <InputLabel id="sort-label"></InputLabel>
           <Select
-            className={classNames(styles.select)}
             variant="outlined"
             value={sortBy}
             labelId="sort-label"
+            className={classNames(styles.select)}
           >
             {filters.sort.map((el) => (
               <MenuItem value={el.value}>{el.label}</MenuItem>
@@ -45,10 +44,10 @@ export default function ExploreFilters({ filters = [] }) {
         >
           <InputLabel id="type-label"></InputLabel>
           <Select
-            className={classNames(styles.select)}
             variant="outlined"
             value={types}
             labelId="type-label"
+            className={classNames(styles.select)}
           >
             {filters.type.map((el) => (
               <MenuItem value={el.value}>{el.label}</MenuItem>
@@ -56,8 +55,8 @@ export default function ExploreFilters({ filters = [] }) {
           </Select>
         </FormControl>
         <TextField
-          className={classNames(styles.search)}
           variant="standard"
+          className={classNames(styles.search)}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
