@@ -9,7 +9,7 @@ import { Card, Container, Grid } from "@mui/material";
 
 import nftsDb from "../../data/nfts.json";
 
-export default function ExplorePage() {
+export default function index() {
   const [nfts, setNfts] = React.useState([]);
   const [nftFilters, setNftFilters] = React.useState();
 
