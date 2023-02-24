@@ -20,7 +20,8 @@ export default function Home() {
   const [trendingFilters, setTrendingFilters] = useState([]);
   const [topCollectors, setTopCollectors] = useState([]);
   const [collectorFilters, setCollectorFilters] = useState([])
-  const [auctionNfts, setAuctionNfts] = useState([]);
+  const [auctions, setAuction] = useState([]);
+  const [auctionFilters, setAuctionFilters] = useState([])
 
   const url = process.env.apiUrl;
 
@@ -62,10 +63,23 @@ export default function Home() {
     setCollectorFilters(data.filters)
   }
 
+  //Fetching LiveAuctions
+  async function fetchingLiveAuctions(){
+    const fetchingLiveAuctionsJson = async ()=>{
+      const res = await fetch(url + "/live-auctions")
+      const result = res.json()
+      return result
+    }
+    const NftsData = await fetchingLiveAuctionsJson()
+    setAuction(NftsData)
+    setAuctionFilters(NftsData.filters)
+  }
+
   useEffect(() => {
     fetchFeatured();
     fetchTrending();
     fetchingTopCollectors()
+    fetchingLiveAuctions()
     // setFeaturedCards(dataFeatured.slice(0,6));
     // setTrendingCards(dataTrending);
     // setTopCollectors(dataUsers.slice(0,12));
@@ -79,7 +93,7 @@ export default function Home() {
       <Trending cards={trendingCards} filters={trendingFilters}/>
       <TopCollectors collectors={topCollectors} filters={collectorFilters}/>
       <How />
-      <Auctions cards={auctionNfts} />
+      <Auctions cards={auctions} filters={auctionFilters}/>
       <Footer />
     </div>
   );
