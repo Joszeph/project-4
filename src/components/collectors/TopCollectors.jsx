@@ -1,4 +1,4 @@
-import { Select, Grid, MenuItem, Box } from "@mui/material";
+import { Select, Grid, MenuItem, Box, Menu } from "@mui/material";
 import Container from "@mui/material/Container";
 import styles from "./TopCollectors.module.scss";
 import classNames from "classnames";
@@ -7,7 +7,7 @@ import chunk from "lodash.chunk";
 
 import CollectorColumn from "./CollectorColumn";
 
-export default function TopCollectors({collectors = []}) {
+export default function TopCollectors({collectors = [], filters=[]}) {
 
   const chunkCollectors = chunk(
     collectors.map((collector, index) => ({ ...collector, id: index + 1, key: index + 1 })),3
@@ -27,7 +27,11 @@ export default function TopCollectors({collectors = []}) {
               borderRadius: "30px",
             }}
           >
-            <MenuItem value={1}>Sort by</MenuItem>
+            <MenuItem value={1}>
+            {Array.isArray(filters.sort) && filters.sort.map((filter, i)=>(
+              <MenuItem value={filter.value} key={i}>{filter.label}</MenuItem>
+            ))}
+            </MenuItem>
           </Select>
         </Box>
         <Grid container spacing={2}>
