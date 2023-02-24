@@ -6,7 +6,7 @@ import Card from "../card/Card";
 import classNames from "classnames";
 import styles from "./Trending.module.scss";
 
-export default function Trending({ cards = [] }) {
+export default function Trending({ cards = [] , filters}) {
   return (
    <div>
      <Container>
@@ -19,7 +19,9 @@ export default function Trending({ cards = [] }) {
             borderRadius: "30px",
           }}
         >
-          <MenuItem value={1}>This week</MenuItem>
+          <MenuItem value={1}>{Array.isArray(filters.sort) && filters.sort.map((filter, i)=>(
+            <MenuItem value={filter.value} key={i}>{filter.label}</MenuItem>
+          ))}</MenuItem>
         </Select>
       </Box>
       <Grid container spacing={2}>
