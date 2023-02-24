@@ -22,12 +22,28 @@ export default function Home(){
   const [trendingCards, setTrendingCards] = useState([]);
   const [topCollectors, setTopCollectors] = useState([]);
   const [auctionNfts, setAuctionNfts] = useState([]);
+
+ const url = process.env.apiUrl
+
+  async function fetchFeatured(){
+    const fetchFeaturedJson = async () =>{
+      const res = await fetch( url + '/featured')
+      const result = res.json()
+      return result
+    }
+
+    const data = await fetchFeaturedJson()
+    data.nfts[0].cols = 3
+    data.nfts[0].rows = 2
+    setFeaturedCards(data.nfts)
+  }
   
   useEffect(() => {
-    setFeaturedCards(dataFeatured.slice(0,6));
-    setTrendingCards(dataTrending);
-    setTopCollectors(dataUsers.slice(0,12));
-    setAuctionNfts(dataNfts);
+    fetchFeatured()
+    // setFeaturedCards(dataFeatured.slice(0,6));
+    // setTrendingCards(dataTrending);
+    // setTopCollectors(dataUsers.slice(0,12));
+    // setAuctionNfts(dataNfts);
   }, [dataFeatured,dataTrending,dataUsers,dataNfts]);
 
   return (
