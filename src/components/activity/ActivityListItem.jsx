@@ -29,19 +29,19 @@ export default function ActivityListItem({
       >
         <Avatar
           className={classNames(styles.avatar)}
-          url={user.avatar.url}
-          verified={user.verified}
+          url={user?.avatar?.url}
+          verified={user?.verified}
           size={60}
           sx={{ p: "21" }}
         />
         <div>
           <p>
-            {user.username} {type == "like" ? " liked '" : " bought '"}
+            {user?.username} {type == "like" ? " liked '" : " bought '"}
             <Link href={"/product/" + nft.id} color="secondary">
-              {nft.name}
+              {nft?.name}
             </Link>
             <Link href={"/profile/" + nft.owner.id} color="secondary">
-              {nft.owner.username}
+              {nft.owner?.username}
             </Link>
           </p>
           <p>

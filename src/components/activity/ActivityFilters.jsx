@@ -27,7 +27,7 @@ export default function ActivityFilters({ filters = { sort: [], type: [] } }) {
         >
           <InputLabel id="sort-by"></InputLabel>
           <Select value="Sort By" variant="outlined" className={classNames(styles.select)}>
-            {filters.sort.map((element) => (
+            {Array.isArray(filters.sort) && filters.sort.map((element) => (
               <MenuItem value={element.value} filter={element.label} />
             ))}
           </Select>
@@ -40,7 +40,7 @@ export default function ActivityFilters({ filters = { sort: [], type: [] } }) {
         >
           <InputLabel id="type"></InputLabel>
           <Select value="Type" variant="outlined" className={classNames(styles.select)}>
-            {filters.type.map((element) => (
+            {Array.isArray(filters.type) && filters.type.map((element) => (
               <MenuItem value={element.value} filter={element.label} />
             ))}
           </Select>

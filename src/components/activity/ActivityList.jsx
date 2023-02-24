@@ -15,7 +15,7 @@ export default function ActivityList({ items = [] }) {
         justifyContent="flex-start"
         alignItems="center"
       >
-        {items.map((item, index) => {
+        {Array.isArray(items) && items.map((item, index) => {
           return (
             <ActivityListItem
               key={index}

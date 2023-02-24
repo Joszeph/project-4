@@ -1,32 +1,32 @@
+import { useEffect, useState } from "react";
+
 import Header from "../../src/components/header/Header";
 import Hero from "../../src/components/hero/Hero.jsx";
 import ActivityFilters from "../../src/components/activity/ActivityFilters";
 import ActivityList from "../../src/components/activity/ActivityList";
 import Footer from "../../src/components/footer/Footer";
-import { useEffect, useState } from "react";
 
-import activityDb from '../../data/activity.json'
+// import activityDb from '../../data/activity.json'
 
 export default function index() {
-  const [activity, setActivity] = useState([]);
 
- useEffect(() => {
-  fetch(activityDb)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
-    .then(json => setActivity(json))
-    .catch(error => console.error("Error fetching activity data:", error));
+  const url = process.env.apiUrl;
+
+  const [activity, setActivity] = useState([]);
+  const [activityFilters, setActivityFilters] = useState([])
+
+ useEffect(async() => {
+  const response = await fetch(`${url}/activities`)
+  const result = await response.json()
+  setActivity(result)
+  setActivityFilters(result.filters)
 }, []);
 
   return (
     <div>
       <Header />
       <Hero text="Activity"/>
-      <ActivityFilters />
+      <ActivityFilters filters={activityFilters}/>
       <ActivityList items={activity} />
       <Footer />
     </div>
