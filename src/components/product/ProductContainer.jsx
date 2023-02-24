@@ -13,15 +13,7 @@ import ProductTabs from "./ProductTabs";
 import { parseISO } from "date-fns";
 
 export default function ProductContainer({
-  name = "",
-  owner = { username: "", verified:false, avatar: { url: "" } },
-  price = 0,
-  currency = "",
-  likes = 0,
-  auction_end = (Date.now() + 1000).toString,
-  details = "",
-  source = { url: "" },
-  bids = [],
+product
 }) {
   return (
     <div className={classNames(styles["product-container"])}>
@@ -33,30 +25,31 @@ export default function ProductContainer({
         spacing={2}
       >
         <Grid item xs="6">
-          <ProductImage url={source.url}/>
+          <ProductImage url={product?.source?.url}/>
         </Grid>
         <Grid item xs="5">
           <ProductInfo
             onTimeEnd={() => {}}
-            title={name}
-            creator={{
-              name: owner.username,
-              verified: owner.verified,
-              avatar: owner.avatar.url,
-            }}
-            price={price}
-            currency={currency}
-            likes={likes}
-            timeEnd={parseISO(auction_end)}
-            isLive={parseISO(auction_end) > Date.now()}
+            title={product?.name}
+            // creator={{
+            //   name: owner.username,
+            //   verified: owner.verified,
+            //   avatar: owner.avatar.url,
+            // }}
+            creator={product?.owner}
+            price={product?.price}
+            currency={product?.currency}
+            likes={product?.likes}
+            timeEnd={parseISO(product?.auction_end)}
+            isLive={parseISO(product?.auction_end) > Date.now()}
           />
-          <ProductTabs text={details} bids={bids}/>
+          <ProductTabs text={product?.details} bids={product?.bids}/>
           <ProductActions
             onBid={() => {}}
             onBuy={() => {}}
             isLive={true}
-            currency={currency}
-            buyAmount={price}
+            currency={product?.currency}
+            buyAmount={product?.price}
             bidAmount={5}
           />
         </Grid>
