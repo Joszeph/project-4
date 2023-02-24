@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import ExploreTitle from "../../src/components/explore/ExploreTitle";
@@ -6,10 +8,21 @@ import Header from "../../src/components/header/Header";
 import Footer from "../../src/components/footer/Footer";
 import Card from "../../src/components/card/Card";
 
-import nfts from '../../data/nfts.json'
+// import nfts from '../../data/nfts.json'
 
 export default function Explore() {
 
+  const url = process.env.apiUrl;
+
+  const [nfts, setNfts] = useState([]);
+  const [nftFilters, setNftsFilters] = useState([])
+
+  useEffect(async()=>{
+    const response = await fetch(`${url}/explore`)
+    const result = await response.json()
+    setNfts(result)
+    setNftsFilters(result.filters)
+  },[])
 
   return (
     <div style={{ width: "100%" }}>
@@ -26,11 +39,11 @@ export default function Explore() {
             <ExploreTitle text="Explore" />
           </Grid>
           <Grid item xs="7">
-            <ExploreFilters  />
+            <ExploreFilters  nftFilters={nftFilters}/>
           </Grid>
         </Grid>
         <Grid container spacing={3} maxWidth="lg" sx={{ marginLeft: 3 }}>
-          {nfts.map((nft) => (
+          {Array.isArray(nfts) && nfts.map((nft) => (
             <Grid item xs="3">
               <Card
                 name={nft.name}

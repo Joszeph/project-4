@@ -13,7 +13,7 @@ import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
 import Search from "@mui/icons-material/Search";
 
-export default function ExploreFilters({ filters = { sort: [], price: [] } }) {
+export default function ExploreFilters({ NftFilters = { sort: [], price: [] } }) {
   const [sortBy, setSort] = React.useState();
   const [prices, setPrice] = React.useState();
 
@@ -40,7 +40,7 @@ export default function ExploreFilters({ filters = { sort: [], price: [] } }) {
             onChange={handleSortChange}
             labelId="sort-label"
           >
-            {filters.sort.map((el) => (
+            {Array.isArray(NftFilters.sort) && NftFilters.sort.map((el) => (
               <MenuItem value={el.value}> {el.label} </MenuItem>
             ))}
           </Select>
@@ -54,7 +54,7 @@ export default function ExploreFilters({ filters = { sort: [], price: [] } }) {
             onChange={handlePriceChange}
             labelId="price-label"
           >
-            {filters.price.map((el) => (
+            {Array.isArray(NftFilters.price) && NftFilters.price.map((el) => (
               <MenuItem value={el.value}> {el.label} </MenuItem>
             ))}
           </Select>
