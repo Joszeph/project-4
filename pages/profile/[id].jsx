@@ -9,7 +9,7 @@ import Footer from "../../src/components/footer/Footer";
 
 // import profile from '../../data/profile.json'
 
-export default function Index() {
+export default function Profile() {
   const router = useRouter();
   const { id } = router.query;
   const url = process.env.apiUrl;
@@ -20,7 +20,7 @@ export default function Index() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`${url}/users/${id}`);
+        const response = await fetch(`${url}/users/{id}`);
         const result = await response.json();
         setProfile(result.user);
         setProfileFilters(result.filters);
@@ -34,7 +34,7 @@ export default function Index() {
   return (
     <div>
       <Header />
-      <ProfileHero image={profile?.avatar.backgroundUrl} />
+      <ProfileHero />
       <ProfileUser
         verified={profile?.verified}
         name={profile?.username}
