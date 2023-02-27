@@ -14,14 +14,14 @@ export default function Profile() {
   const router = useRouter();
   const { id } = router.query;
 
-  const [user, setUser] = useState([]);
-  const [filters, setFilters] = useState([]);
+  const [profile, setProfile] = useState([]);
+  const [profileFilters, setProfileFilters] = useState([]);
 
   useEffect(async () => {
     const response = await fetch(`https://project-4-api.boom.dev/users/${id}`);
     const result = await response.json();
-    setUser(result);
-    setFilters(result.filters);
+    setProfile(result);
+    setProfileFilters(result.filters);
   });
 
   return (
@@ -29,7 +29,7 @@ export default function Profile() {
       <Header />
       <ProfileHero />
       <ProfileUser />
-      <ProfileCollection user={user} />
+      <ProfileCollection user={profile} filters={profileFilters}/>
       <Footer />
     </div>
   );
