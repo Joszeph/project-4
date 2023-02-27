@@ -9,10 +9,10 @@ import Footer from "../../src/components/footer/Footer";
 
 // import profile from '../../data/profile.json'
 
-export default function Profile() {
+export default function Index() {
   const router = useRouter();
   const { id } = router.query;
-  // const url = process.env.apiUrl;
+  const url = process.env.apiUrl;
 
   const [profile, setProfile] = useState();
   const [profileFilters, setProfileFilters] = useState();
@@ -20,11 +20,10 @@ export default function Profile() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`https://project-4-api.boom.dev/users/${id}`);
+        const response = await fetch(`${url}/users/${id}`);
         const result = await response.json();
         setProfile(result.user);
         setProfileFilters(result.filters);
-        console.log(result);
       } catch (error) {
         console.error(error);
       }
@@ -35,13 +34,17 @@ export default function Profile() {
   return (
     <div>
       <Header />
-      <ProfileHero />
+      <ProfileHero image={profile?.avatar.backgroundUrl} />
       <ProfileUser
         verified={profile?.verified}
         name={profile?.username}
         info={profile?.info}
       />
-      <ProfileCollection user={profile} filters={profileFilters} />
+      <ProfileCollection
+        user={profile}
+        filters={profileFilters}
+        items={profile?.nfts}
+      />
       <Footer />
     </div>
   );

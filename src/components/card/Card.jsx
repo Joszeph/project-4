@@ -42,7 +42,7 @@ export default function Card({
     >
       <div className={classNames(styles.avatarHolder)}>
         <Avatar
-          src={user.avatar.url}
+          src={user?.avatar?.url}
           size="33"
           verified={user.verified}
           badgeSize="15.55"
