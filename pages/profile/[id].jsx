@@ -1,46 +1,36 @@
-import { useRouter } from 'next/router';
-import Header from "../../../src/components/header/Header";
-import Footer from "../../../src/components/footer/Footer";
-import * as React from 'react';
-import ProfileHero from '../../../src/components/profile/ProfileHero';
-import ProfileUser from '../../../src/components/profile/ProfileUser';
-import ProfileCollectionFilters from '../../../src/components/profile/ProfileCollectionFilters';
-import ProfileCollection from '../../../src/components/profile/ProfileCollection';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/dist/client/router";
 
+import Header from "../../src/components/header/Header";
+import ProfileHero from "../../src/components/profile/ProfileHero";
+import ProfileUser from "../../src/components/profile/ProfileUser";
+import ProfileCollection from "../../src/components/profile/ProfileCollection";
+import Footer from "../../src/components/footer/Footer";
 
-export default  function ProfilePage(){
-    const [profile, setProfile] = React.useState();
-    const [profileFilters, setProfileFilters] = React.useState();
-    const router =useRouter();
+// import profile from '../../data/profile.json'
 
-    async function fetchProfile(){
-      const fetchJson = async ()=>{
-        const response = await fetch(process.env.apiUrl+"/users/"+router.query.id);
-        const results = await response.json();  
-        return results;
-        };
-      const jsons = await  fetchJson();
-      console.log(jsons);
-      setProfile(jsons.user);
-      setProfileFilters(jsons.filters);
-    }
-    React.useEffect(() => {
-        fetchProfile();
-    }, [router]);
-    
+export default function Profile() {
+  const url = process.env.apiUrl;
+  const router = useRouter();
+  const { id } = router.query;
 
-    
-    return (
-        <div style={{width:"100%"}}>   
-        <Header></Header>
-        
-        {profile && <ProfileHero image = {profile.avatar.backgroundUrl}></ProfileHero>}
+  const [user, setUser] = useState([]);
+  const [filters, setFilters] = useState([]);
 
-        {profile && <ProfileUser verified={profile.verified} avatar = {profile.avatar.url} name= {profile.username} info={profile.info}></ProfileUser>}
-        {profile && profileFilters && <ProfileCollection user = {profile} filters = {profileFilters} items = {profile.nfts}></ProfileCollection>}
+  useEffect(async () => {
+    const response = await fetch(`https://project-4-api.boom.dev/users/${id}`);
+    const result = await response.json();
+    setUser(result);
+    setFilters(result.filters);
+  });
 
-        <Footer></Footer>
-        </div>
-    );
- 
+  return (
+    <div>
+      <Header />
+      <ProfileHero />
+      <ProfileUser />
+      <ProfileCollection user={user} />
+      <Footer />
+    </div>
+  );
 }
