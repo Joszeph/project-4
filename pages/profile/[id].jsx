@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/dist/client/router'
 
 import Header from '../../src/components/header/Header'
 import ProfileHero from '../../src/components/profile/ProfileHero'
@@ -10,6 +11,8 @@ import Footer from '../../src/components/footer/Footer'
 
 export default function Profile({profile}) {
 
+const router = useRouter()  
+const {id} = router.query
 const url= process.env.apiUrl
 
 const [user, setUser] = useState([])
