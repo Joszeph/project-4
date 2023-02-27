@@ -8,7 +8,6 @@ import ProfileCollection from "../../src/components/profile/ProfileCollection";
 import Footer from "../../src/components/footer/Footer";
 
 // import profile from '../../data/profile.json'
-//test change repo name to test-page
 
 export default function Profile() {
   const router = useRouter();
