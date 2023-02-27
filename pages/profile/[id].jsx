@@ -20,7 +20,7 @@ export default function Profile() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(process.env.apiUrl + "/users/" + id);
+        const response = await fetch(`https://project-4-api.boom.dev/users/${id}`);
         const result = await response.json();
         setProfile(result.user);
         setProfileFilters(result.filters);
