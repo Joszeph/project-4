@@ -1,43 +1,52 @@
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+
 import Header from "../../src/components/header/Header";
-import Footer from "../../src/components/footer/Footer";
-import * as React from "react";
 import ProfileHero from "../../src/components/profile/ProfileHero";
 import ProfileUser from "../../src/components/profile/ProfileUser";
-
 import ProfileCollection from "../../src/components/profile/ProfileCollection";
+import Footer from "../../src/components/footer/Footer";
 
-export default function ProfilePage() {
-  const [profile, setProfile] = React.useState();
-  const [profileFilters, setProfileFilters] = React.useState();
+// import profile from '../../data/profile.json'
+
+export default function Profile() {
   const router = useRouter();
+  const {id} = router.query;
+  const url = process.env.apiUrl;
 
-  async function fetchProfile() {
-    const fetchJson = async () => {
-      const response = await fetch(
-        process.env.apiUrl + "/users/" + router.query.id
-      );
-      const results = await response.json();
-      return results;
-    };
-    const jsons = await fetchJson();
-    console.log(jsons);
-    setProfile(jsons.user);
-    setProfileFilters(jsons.filters);
-  }
-  React.useEffect(() => {
-    fetchProfile();
-  }, [router]);
+  const [profile, setProfile] = useState();
+  const [profileFilters, setProfileFilters] = useState();
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(`${url}/users/${id}`);
+        // const response = await fetch(`${url}/users/427`);
+        const result = await response.json();
+        setProfile(result);
+        // setProfileFilters(result.filters);
+        console.log( result);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, []);
 
   return (
-    <div style={{ width: "100%" }}>
+    <div>
       <Header />
-
       <ProfileHero />
-
-      <ProfileUser />
-      <ProfileCollection user={profile} filters={profileFilters} />
-
+      {profile && (
+        <ProfileUser
+          verified={profile.verified}
+          name={profile.username}
+          info={profile.info}
+        />
+      )}
+      {profile && profileFilters && (
+        <ProfileCollection user={profile} filters={profileFilters} />
+      )}
       <Footer />
     </div>
   );
