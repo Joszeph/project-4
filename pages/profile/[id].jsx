@@ -11,7 +11,7 @@ import Footer from "../../src/components/footer/Footer";
 
 export default function Profile() {
   const router = useRouter();
-  const {id} = router.query;
+  const id = router.query['id'];
   const url = process.env.apiUrl;
 
   const [profile, setProfile] = useState();
@@ -20,11 +20,11 @@ export default function Profile() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`${url}/users/${id}`);
-        // const response = await fetch(`${url}/users/427`);
+        // const response = await fetch(`${url}/users/${id}`);
+        const response = await fetch(`${url}/users/427`);
         const result = await response.json();
-        setProfile(result);
-        // setProfileFilters(result.filters);
+        setProfile(result.user);
+        setProfileFilters(result.filters);
         console.log( result);
       } catch (error) {
         console.error(error);
