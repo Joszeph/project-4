@@ -10,25 +10,48 @@ import Footer from "../../src/components/footer/Footer";
 // import profile from '../../data/profile.json'
 
 export default function Profile() {
+  // const router = useRouter();
+  // const { id } = router.query;
+  // const url = process.env.apiUrl;
+
+  // const [profile, setProfile] = useState([]);
+  // const [profileFilters, setProfileFilters] = useState();
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const response = await fetch(`${url}/users/${id}`);
+  //       const result = await response.json();
+  //       setProfile(result.user);
+  //       setProfileFilters(result.filters);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  //   fetchData();
+  // }, [id]);
+
   const router = useRouter();
   const { id } = router.query;
-  const url = process.env.apiUrl;
 
-  const [profile, setProfile] = useState([]);
-  const [profileFilters, setProfileFilters] = useState();
+  const [profile, setProfile] = useState(null);
+  const [profileFilters, setProfileFilters] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchProfile() {
       try {
-        const response = await fetch(`${url}/users/${id}`);
-        const result = await response.json();
-        setProfile(result.user);
-        setProfileFilters(result.filters);
+        const response = await fetch(`https://project-4-api.boom.dev/users/${id}`);
+        const { user, filters } = await response.json();
+        setProfile(user);
+        setProfileFilters(filters);
       } catch (error) {
         console.error(error);
       }
     }
-    fetchData();
+
+    if (id) {
+      fetchProfile();
+    }
   }, [id]);
 
   return (
@@ -42,7 +65,7 @@ export default function Profile() {
       />
       <ProfileCollection
         user={profile}
-        filters={profileFilters}
+        filters={profile?.profileFilters}
         items={profile?.nfts}
       />
       <Footer />
