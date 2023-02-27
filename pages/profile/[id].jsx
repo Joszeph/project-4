@@ -1,35 +1,43 @@
-import { useState, useEffect } from "react";
-import { useRouter } from "next/dist/client/router";
-
+import { useRouter } from "next/router";
 import Header from "../../src/components/header/Header";
+import Footer from "../../src/components/footer/Footer";
+import * as React from "react";
 import ProfileHero from "../../src/components/profile/ProfileHero";
 import ProfileUser from "../../src/components/profile/ProfileUser";
+
 import ProfileCollection from "../../src/components/profile/ProfileCollection";
-import Footer from "../../src/components/footer/Footer";
 
-// import profile from '../../data/profile.json'
-
-export default function Profile() {
-  const url = process.env.apiUrl;
+export default function ProfilePage() {
+  const [profile, setProfile] = React.useState();
+  const [profileFilters, setProfileFilters] = React.useState();
   const router = useRouter();
-  const { id } = router.query;
 
-  const [profile, setProfile] = useState([]);
-  const [profileFilters, setProfileFilters] = useState([]);
-
-  useEffect(async () => {
-    const response = await fetch(`https://project-4-api.boom.dev/users/${id}`);
-    const result = await response.json();
-    setProfile(result);
-    setProfileFilters(result.filters);
-  });
+  async function fetchProfile() {
+    const fetchJson = async () => {
+      const response = await fetch(
+        process.env.apiUrl + "/users/" + router.query.id
+      );
+      const results = await response.json();
+      return results;
+    };
+    const jsons = await fetchJson();
+    console.log(jsons);
+    setProfile(jsons.user);
+    setProfileFilters(jsons.filters);
+  }
+  React.useEffect(() => {
+    fetchProfile();
+  }, [router]);
 
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <Header />
+
       <ProfileHero />
+
       <ProfileUser />
-      <ProfileCollection user={profile} filters={profileFilters}/>
+      <ProfileCollection user={profile} filters={profileFilters} />
+
       <Footer />
     </div>
   );
