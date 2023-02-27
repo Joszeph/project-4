@@ -23,9 +23,7 @@ export default function Product() {
       const response = await fetch(`${url}/nfts/${id}`)
       const result = await response.json()
       setProduct(result)
-    // const result = await fetch(`${url}/nfts/${id}`);
-    // const response = await result.json();
-    // setProduct(response);
+
   });
 
   return (
