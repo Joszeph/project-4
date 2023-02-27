@@ -12,7 +12,7 @@ import Footer from "../../src/components/footer/Footer";
 export default function Profile() {
   const router = useRouter();
   const { id } = router.query;
-  const url = process.env.apiUrl;
+  // const url = process.env.apiUrl;
 
   const [profile, setProfile] = useState();
   const [profileFilters, setProfileFilters] = useState();
@@ -20,7 +20,7 @@ export default function Profile() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`${url}/users/${id}`);
+        const response = await fetch(process.env.apiUrl + "/users/" + id);
         const result = await response.json();
         setProfile(result.user);
         setProfileFilters(result.filters);
