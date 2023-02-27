@@ -10,46 +10,26 @@ import Footer from "../../src/components/footer/Footer";
 // import profile from '../../data/profile.json'
 
 export default function Profile() {
-  const [profile, setProfile] = useState();
-  const [profileFilters, setProfileFilters] = useState();
+  const url = process.env.apiUrl;
   const router = useRouter();
+  const { id } = router.query;
 
-  async function fetchProfile() {
-    const fetchJson = async () => {
-      const response = await fetch(
-        process.env.apiUrl + "/users/" + router.query.id
-      );
-      const results = await response.json();
-      return results;
-    };
-    const jsons = await fetchJson();
-    setProfile(jsons.user);
-    setProfileFilters(jsons.filters);
-  }
-  useEffect(() => {
-    fetchProfile();
-  }, [router]);
+  const [user, setUser] = useState([]);
+  const [filters, setFilters] = useState([]);
+
+  useEffect(async () => {
+    const response = await fetch(`${url}/users/${id}`);
+    const result = await response.json();
+    setUser(result);
+    setFilters(result.filters);
+  });
 
   return (
     <div>
       <Header />
-      {profile && <ProfileHero image={profile.avatar.backgroundUrl} />}
-
-      {profile && (
-        <ProfileUser
-          verified={profile.verified}
-          avatar={profile.avatar.url}
-          name={profile.username}
-          info={profile.info}
-        />
-      )}
-      {profile && profileFilters && (
-        <ProfileCollection
-          user={profile}
-          filters={profileFilters}
-          items={profile.nfts}
-        />
-      )}
+      <ProfileHero />
+      <ProfileUser />
+      <ProfileCollection user={user} filters={filters} />
       <Footer />
     </div>
   );
