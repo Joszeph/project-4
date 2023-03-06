@@ -30,7 +30,7 @@ export default function index() {
 
 
 const buildApiUrl = () => {
-  let url = `${process.env.apiUrl}/activity`;
+  let url = `${process.env.apiUrl}/activities`;
 
   if (sortBy) {
     url += `?sort=${sortBy}`;
