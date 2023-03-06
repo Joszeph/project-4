@@ -46,8 +46,12 @@ const buildApiUrl = () => {
 useEffect(async () => {
   try{
     const response = await fetch(buildApiUrl());
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const result = await response.json();
-    setActivity(result.filters);
+    setActivity(result.activities);
+    setActivityFilters(result.filters);
   }catch(error){
     console.log(error)
   }

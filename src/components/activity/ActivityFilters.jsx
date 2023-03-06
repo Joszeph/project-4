@@ -46,7 +46,7 @@ export default function ActivityFilters({
           >
             {Array.isArray(filters.sort) &&
               filters.sort.map((element) => (
-                <MenuItem value={element.value} filter={element.label} />
+                <MenuItem value={element.value} filter={element.label} key={element.value}/>
               ))}
           </Select>
         </FormControl>
@@ -68,7 +68,7 @@ export default function ActivityFilters({
           >
             {Array.isArray(filters.type) &&
               filters.type.map((element) => (
-                <MenuItem value={element.value} filter={element.label} />
+                <MenuItem value={element.value} filter={element.label} key={element.value}/>
               ))}
           </Select>
         </FormControl>
