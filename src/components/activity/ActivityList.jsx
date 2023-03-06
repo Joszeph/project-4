@@ -18,7 +18,7 @@ export default function ActivityList({ items = [] }) {
         {Array.isArray(items) && items.map((item, index) => {
           return (
             <ActivityListItem
-              key={index}
+              key={item.id}
               user={item.user}
               created_at={item.created_at}
               nft={item.nft}

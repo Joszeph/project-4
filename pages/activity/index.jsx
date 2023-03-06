@@ -18,32 +18,37 @@ export default function index() {
   const [type, setType] = useState();
 
  useEffect(async() => {
-  const response = await fetch(`${url}/activities`)
-  const result = await response.json()
-  setActivity(result.activities)
-  setActivityFilters(result.filters)
+  try{
+    const response = await fetch(`${url}/activities`)
+    const result = await response.json()
+    setActivity(result.activities)
+    setActivityFilters(result.filters)
+  }catch(err){
+    console.log(err)
+  }
+
 }, []);
 
 
-// const buildApiUrl = () => {
-//   let url = `${process.env.apiUrl}/activity`;
+const buildApiUrl = () => {
+  let url = `${process.env.apiUrl}/activity`;
 
-//   if (sortBy) {
-//     url += `?sort=${sortBy}`;
-//   }
+  if (sortBy) {
+    url += `?sort=${sortBy}`;
+  }
 
-//   if (type) {
-//     url += `${sortBy ? '&' : '?'}type=${type}`;
-//   }
+  if (type) {
+    url += `${sortBy ? '&' : '?'}type=${type}`;
+  }
 
-//   return url;
-// };
+  return url;
+};
 
-// useEffect(async () => {
-//   const response = await fetch(buildApiUrl());
-//   const result = await response.json();
-//   setActivity(result.activity);
-// }, [sortBy, type]);
+useEffect(async () => {
+  const response = await fetch(buildApiUrl());
+  const result = await response.json();
+  setActivity(result.activityFilters);
+}, [sortBy, type]);
 
 
 
