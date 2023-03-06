@@ -21,7 +21,7 @@ export default function ActivityFilters({
   handleTypeChange,
 }) {
   const [sortBy, setSortBy] = useState("");
-const [type, setType] = useState("");
+  const [type, setType] = useState("");
   return (
     <div className={classNames(styles["activity-filters"])}>
       <Stack direction="row" spacing={2} alignItems="center">
