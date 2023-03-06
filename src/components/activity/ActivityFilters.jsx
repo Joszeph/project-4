@@ -87,6 +87,7 @@
 //   );
 // }
 import * as React from 'react';
+import { useEffect } from 'react';
 import classNames from "classnames";
 import styles from "./ActivityFilters.module.scss";
 import  Typography  from '@mui/material/Typography';
@@ -108,6 +109,39 @@ export default function ActivityFilters({filters={sort: [], type:[]}}) {
     const [types, setType] = React.useState();
     //console.log(filters.sort);
    // console.log(filters.price);
+
+   const buildApiUrl = () => {
+        let url = `${process.env.apiUrl}/activities`;
+    
+        if (sortBy) {
+          url += `?sort=${sortBy}`;
+        }
+    
+        if (types) {
+          url += `${sortBy ? '&' : '?'}types=${types}`;
+        }
+    
+        return url;
+      };
+    
+      useEffect(async () => {
+        try{
+          const response = await fetch(buildApiUrl());
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const result = await response.json();
+          setActivity(result.activities);
+        }catch(error){
+          console.log(error)
+        }
+    
+      }, [sortBy, types]);
+
+
+
+
+
    const handleSortChange = (event)=>{
         setSort(event.target.value);
     };

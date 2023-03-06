@@ -56,7 +56,6 @@
 
 //   }, [sortBy, price]);
 
-
 //   const handleSortChange = (e) => {
 //     setSortBy(e.target.value);
 //   };
@@ -86,31 +85,36 @@ import Hero from "../../src/components/hero/Hero";
 import ActivityList from "../../src/components/activity/ActivityList";
 import ActivityFilters from "../../src/components/activity/ActivityFilters";
 
-export default function index(){
-    const [activity, setActivity] = React.useState();
-    const [activityFilters, setActivityFilters] = React.useState();
-    async function fetchActivities(){
-      const fetchJson = async ()=>{
-        const response = await fetch(process.env.apiUrl+"/activities");
-        const results = await response.json();  
-        return results;
-        };
-      const jsons = await  fetchJson();
-      
-      setActivity(jsons.activities);
-      setActivityFilters(jsons.filters);
-    }
-    React.useEffect(() => {
-        fetchActivities();
-    }, []);
+export default function index() {
 
-    return (
-        <div style={{width:"100%"}}>   
-            <Header></Header>
-            <Hero text={"Activity"}></Hero>
-             <ActivityFilters filters={activityFilters}></ActivityFilters>
-            <ActivityList items={activity}></ActivityList>
-            <Footer></Footer>
-        </div>
-        );
+  const url = process.env.apiUrl
+
+  const [activity, setActivity] = React.useState();
+  const [activityFilters, setActivityFilters] = React.useState();
+  async function fetchActivities() {
+    const fetchJson = async () => {
+      const response = await fetch( url + "/activities");
+      const results = await response.json();
+      return results;
+    };
+    const data = await fetchJson();
+
+    setActivity(data.activities);
+    setActivityFilters(data.filters);
+  }
+  React.useEffect(() => {
+    fetchActivities();
+  }, []);
+
+  return (
+    <div>
+      <Header />
+      <Hero text="Activity" />
+      <ActivityFilters
+        filters={activityFilters}
+      />
+      <ActivityList items={activity} />
+      <Footer />
+    </div>
+  );
 }
