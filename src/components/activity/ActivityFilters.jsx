@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 
 import classNames from "classnames";
 import styles from "./ActivityFilters.module.scss";
@@ -14,7 +15,13 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-export default function ActivityFilters({ filters =[] , handleSortChange, handleTypeChange }) {
+export default function ActivityFilters({
+  filters = [],
+  handleSortChange,
+  handleTypeChange,
+}) {
+  const [sortBy, setSortBy] = useState("");
+const [type, setType] = useState("");
   return (
     <div className={classNames(styles["activity-filters"])}>
       <Stack direction="row" spacing={2} alignItems="center">
@@ -26,10 +33,19 @@ export default function ActivityFilters({ filters =[] , handleSortChange, handle
           sx={{ minWidth: 150 }}
         >
           <InputLabel id="sort-by"></InputLabel>
-          <Select value="Sort By" variant="outlined" className={classNames(styles.select)} onChange={handleSortChange}>
-            {Array.isArray(filters.sort) && filters.sort.map((element) => (
-              <MenuItem value={element.value} filter={element.label} />
-            ))}
+          <Select
+            variant="outlined"
+            value={sortBy}
+            className={classNames(styles.select)}
+            onChange={(e) => {
+              handleSortChange(e);
+              setSortBy(e.target.value);
+            }}
+          >
+            {Array.isArray(filters.sort) &&
+              filters.sort.map((element) => (
+                <MenuItem value={element.value} filter={element.label} />
+              ))}
           </Select>
         </FormControl>
         <FormControl
@@ -39,10 +55,19 @@ export default function ActivityFilters({ filters =[] , handleSortChange, handle
           sx={{ minWidth: 150 }}
         >
           <InputLabel id="type"></InputLabel>
-          <Select value="Type" variant="outlined" className={classNames(styles.select)} onChange={handleTypeChange}>
-            {Array.isArray(filters.type) && filters.type.map((element) => (
-              <MenuItem value={element.value} filter={element.label} />
-            ))}
+          <Select
+            variant="outlined"
+            value={type}
+            className={classNames(styles.select)}
+            onChange={(e) => {
+              handleTypeChange(e);
+              setType(e.target.value);
+            }}
+          >
+            {Array.isArray(filters.type) &&
+              filters.type.map((element) => (
+                <MenuItem value={element.value} filter={element.label} />
+              ))}
           </Select>
         </FormControl>
         <TextField

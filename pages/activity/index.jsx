@@ -42,7 +42,7 @@ const buildApiUrl = () => {
 useEffect(async () => {
   const response = await fetch(buildApiUrl());
   const result = await response.json();
-  setActivity(result.activities);
+  setActivity(result.activity);
 }, [sortBy, type]);
 
 
