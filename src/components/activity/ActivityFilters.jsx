@@ -17,11 +17,18 @@ import SearchIcon from "@mui/icons-material/Search";
 
 export default function ActivityFilters({
   filters = [],
-  handleSortChange,
-  handleTypeChange,
+  // handleSortChange,
+  // handleTypeChange,
 }) {
   const [sortBy, setSortBy] = useState("");
   const [type, setType] = useState("");
+
+  const handleSortChange = (event) => {
+    setSortBy(event.target.value);
+  };
+  const handleTypeChange = (event) => {
+    setType(event.target.value);
+  };
   return (
     <div className={classNames(styles["activity-filters"])}>
       <Stack direction="row" spacing={2} alignItems="center">

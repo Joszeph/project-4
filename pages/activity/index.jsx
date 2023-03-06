@@ -26,46 +26,47 @@ export default function index() {
   }catch(err){
     console.log(err)
   }
-
 }, []);
 
 
-const buildApiUrl = () => {
-  let url = `${process.env.apiUrl}/activity`;
+// const buildApiUrl = () => {
+//   let url = `${process.env.apiUrl}/activities`;
 
-  if (sortBy) {
-    url += `?sort=${sortBy}`;
-  }
+//   if (sortBy) {
+//     url += `?sort=${sortBy}`;
+//   }
 
-  if (type) {
-    url += `${sortBy ? '&' : '?'}type=${type}`;
-  }
+//   if (type) {
+//     url += `${sortBy ? '&' : '?'}type=${type}`;
+//   }
 
-  return url;
-};
+//   return url;
+// };
 
-useEffect(async () => {
-  const response = await fetch(buildApiUrl());
-  const result = await response.json();
-  setActivity(result.activityFilters);
-}, [sortBy, type]);
+// useEffect(async () => {
+//   const response = await fetch(buildApiUrl());
+//   const result = await response.json();
+//   setActivity(result.activityFilters);
+// }, [sortBy, type]);
 
 
 
-const handleSortChange = (e) => {
-  setSortBy(e.target.value);
-};
+// const handleSortChange = (e) => {
+//   setSortBy(e.target.value);
+// };
 
-const handleTypeChange = (e) => {
-  setType(e.target.value);
-};
+// const handleTypeChange = (e) => {
+//   setType(e.target.value);
+// };
 
 
   return (
     <div>
       <Header />
       <Hero text="Activity"/>
-      <ActivityFilters filters={activityFilters} handleSortChange={handleSortChange} handleTypeChange={handleTypeChange}/>
+      <ActivityFilters filters={activityFilters}
+      //  handleSortChange={handleSortChange} handleTypeChange={handleTypeChange}
+      />
       <ActivityList items={activity} />
       <Footer />
     </div>
