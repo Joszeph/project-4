@@ -9,72 +9,89 @@ import Footer from "../../src/components/footer/Footer";
 // import activityDb from '../../data/activity.json'
 
 export default function index() {
-
   const url = process.env.apiUrl;
 
   const [activity, setActivity] = useState([]);
-  const [activityFilters, setActivityFilters] = useState([])
+  const [activityFilters, setActivityFilters] = useState([]);
   const [sortBy, setSortBy] = useState();
   const [type, setType] = useState();
 
- useEffect(async() => {
-  try{
-    const response = await fetch(`${url}/activities`)
-    const result = await response.json()
-    setActivity(result.activities)
-    setActivityFilters(result.filters)
-  }catch(err){
-    console.log(err)
-  }
-}, []);
-
-
-const buildApiUrl = () => {
-  let url = `${process.env.apiUrl}/activities`;
-
-  if (sortBy) {
-    url += `?sort=${sortBy}`;
-  }
-
-  if (type) {
-    url += `${sortBy ? '&' : '?'}type=${type}`;
-  }
-
-  return url;
-};
-
-useEffect(async () => {
-  try{
-    const response = await fetch(buildApiUrl());
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+  useEffect(async () => {
+    try {
+      const response = await fetch(`${url}/activities`);
+      const result = await response.json();
+      setActivity(result.activities);
+      setActivityFilters(result.filters);
+    } catch (err) {
+      console.log(err);
     }
-    const result = await response.json();
-    setActivity(result.activities);
-    setActivityFilters(result.filters);
-  }catch(error){
-    console.log(error)
-  }
+  }, []);
 
-}, [sortBy, type]);
+  // const buildApiUrl = () => {
+  //   let url = `${process.env.apiUrl}/activities`;
 
+  //   if (sortBy) {
+  //     url += `?sort=${sortBy}`;
+  //   }
 
+  //   if (type) {
+  //     url += `${sortBy ? '&' : '?'}type=${type}`;
+  //   }
 
-const handleSortChange = (e) => {
-  setSortBy(e.target.value);
-};
+  //   return url;
+  // };
 
-const handleTypeChange = (e) => {
-  setType(e.target.value);
-};
+  // useEffect(async () => {
+  //   try{
+  //     const response = await fetch(buildApiUrl());
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! status: ${response.status}`);
+  //     }
+  //     const result = await response.json();
+  //     setActivity(result.activities);
+  //     setActivityFilters(result.filters);
+  //   }catch(error){
+  //     console.log(error)
+  //   }
 
+  // }, [sortBy, type]);
+
+  useEffect(async () => {
+    try {
+      const result = await fetch(`${url}/activities?sort=${sortBy}`);
+      const response = await result.json();
+      setActivity(response.activities);
+    } catch (error) {
+      throw error;
+    }
+  }, [sortBy]);
+
+  useEffect(async () => {
+    try {
+      const result = await fetch(`${url}/activities?type=${type}`);
+      const response = await result.json();
+      setActivity(response.activities);
+    } catch (error) {
+      throw error;
+    }
+  }, [type]);
+
+  const handleSortChange = (e) => {
+    setSortBy(e.target.value);
+  };
+
+  const handleTypeChange = (e) => {
+    setType(e.target.value);
+  };
 
   return (
     <div>
       <Header />
-      <Hero text="Activity"/>
-      <ActivityFilters filters={activityFilters}
-       handleSortChange={handleSortChange} handleTypeChange={handleTypeChange}
+      <Hero text="Activity" />
+      <ActivityFilters
+        filters={activityFilters}
+        handleSortChange={handleSortChange}
+        handleTypeChange={handleTypeChange}
       />
       <ActivityList items={activity} />
       <Footer />
