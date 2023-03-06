@@ -35,7 +35,7 @@ export default function index() {
     }
 
     if (price) {
-      url += `${sortBy ? '&' : '?'}type=${price}`;
+      url += `${sortBy ? '&' : '?'}price=${price}`;
     }
 
     return url;
