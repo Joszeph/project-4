@@ -17,18 +17,13 @@ import SearchIcon from "@mui/icons-material/Search";
 
 export default function ActivityFilters({
   filters = [],
-  // handleSortChange,
-  // handleTypeChange,
+  handleSortChange,
+  handleTypeChange,
 }) {
+
   const [sortBy, setSortBy] = useState("");
   const [type, setType] = useState("");
 
-  const handleSortChange = (event) => {
-    setSortBy(event.target.value);
-  };
-  const handleTypeChange = (event) => {
-    setType(event.target.value);
-  };
   return (
     <div className={classNames(styles["activity-filters"])}>
       <Stack direction="row" spacing={2} alignItems="center">
@@ -44,10 +39,10 @@ export default function ActivityFilters({
             variant="outlined"
             value={sortBy}
             className={classNames(styles.select)}
-            onChange={
-              handleSortChange
-              // setSortBy(e.target.value);
-            }
+            onChange={(e) => {
+              handleSortChange(e);
+              setSortBy(e.target.value);
+            }}
           >
             {Array.isArray(filters.sort) &&
               filters.sort.map((element) => (
@@ -64,12 +59,12 @@ export default function ActivityFilters({
           <InputLabel id="type"></InputLabel>
           <Select
             variant="outlined"
-            value={type}
+            // value={type}
             className={classNames(styles.select)}
-            onChange={
-              handleTypeChange
-              // setType(e.target.value);
-            }
+            onChange={(e) => {
+              handleTypeChange(e);
+              setType(e.target.value);
+            }}
           >
             {Array.isArray(filters.type) &&
               filters.type.map((element) => (

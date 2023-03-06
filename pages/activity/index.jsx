@@ -29,35 +29,40 @@ export default function index() {
 }, []);
 
 
-// const buildApiUrl = () => {
-//   let url = `${process.env.apiUrl}/activities`;
+const buildApiUrl = () => {
+  let url = `${process.env.apiUrl}/activities`;
 
-//   if (sortBy) {
-//     url += `?sort=${sortBy}`;
-//   }
+  if (sortBy) {
+    url += `?sort=${sortBy}`;
+  }
 
-//   if (type) {
-//     url += `${sortBy ? '&' : '?'}type=${type}`;
-//   }
+  if (type) {
+    url += `${sortBy ? '&' : '?'}type=${type}`;
+  }
 
-//   return url;
-// };
+  return url;
+};
 
-// useEffect(async () => {
-//   const response = await fetch(buildApiUrl());
-//   const result = await response.json();
-//   setActivity(result.activityFilters);
-// }, [sortBy, type]);
+useEffect(async () => {
+  try{
+    const response = await fetch(buildApiUrl());
+    const result = await response.json();
+    setActivity(result.activityFilters);
+  }catch(error){
+    console.log(error)
+  }
+
+}, [sortBy, type]);
 
 
 
-// const handleSortChange = (e) => {
-//   setSortBy(e.target.value);
-// };
+const handleSortChange = (e) => {
+  setSortBy(e.target.value);
+};
 
-// const handleTypeChange = (e) => {
-//   setType(e.target.value);
-// };
+const handleTypeChange = (e) => {
+  setType(e.target.value);
+};
 
 
   return (
@@ -65,7 +70,7 @@ export default function index() {
       <Header />
       <Hero text="Activity"/>
       <ActivityFilters filters={activityFilters}
-      //  handleSortChange={handleSortChange} handleTypeChange={handleTypeChange}
+       handleSortChange={handleSortChange} handleTypeChange={handleTypeChange}
       />
       <ActivityList items={activity} />
       <Footer />
