@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import classNames from "classnames";
 import styles from "./ExploreFilters.module.scss";
@@ -12,8 +12,15 @@ import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
 import Search from "@mui/icons-material/Search";
 
-export default function ExploreFilters({ filters, handleSortChange , handlePriceChange }) {
+export default function ExploreFilters({
+  filters=[],
+  handleSortChange,
+  handlePriceChange,
+}) {
+  const [sortBy, setSortBy] = useState("");
+  const [prices, setPrices] = useState("");
 
+  console.log(sortBy)
 
   return (
     <div className={classNames(styles["explore-filters"])}>
@@ -28,13 +35,18 @@ export default function ExploreFilters({ filters, handleSortChange , handlePrice
           <Select
             className={classNames(styles.select)}
             variant="outlined"
-      
-            onChange={handleSortChange}
             labelId="sort-label"
+            value={sortBy}
+            onChange={(e) => {
+              handleSortChange(e);
+              setSortBy(e.target.value);
+            }}
           >
             {Array.isArray(filters.sort) &&
               filters.sort.map((el) => (
-                <MenuItem value={el.value} key={el.id}> {el.label} </MenuItem>
+                <MenuItem value={el.value} key={el.id}>
+                  {el.label}
+                </MenuItem>
               ))}
           </Select>
         </FormControl>
@@ -43,13 +55,18 @@ export default function ExploreFilters({ filters, handleSortChange , handlePrice
           <Select
             className={classNames(styles.select)}
             variant="outlined"
-         
-            onChange={handlePriceChange}
             labelId="price-label"
+            value={prices}
+            onChange={(e) => {
+              handlePriceChange(e);
+              setPrices(e.target.value);
+            }}
           >
             {Array.isArray(filters.price) &&
               filters.price.map((el) => (
-                <MenuItem value={el.value} key={el.id}> {el.label} </MenuItem>
+                <MenuItem value={el.value} key={el.id}>
+                  {el.label}
+                </MenuItem>
               ))}
           </Select>
         </FormControl>

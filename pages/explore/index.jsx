@@ -25,21 +25,41 @@ export default function Explore() {
     setFilters(result.filters);
   }, []);
   
-  useEffect(async () => {
+  // useEffect(async () => {
+  //   if (sortBy) {
+  //     const response = await fetch(`${url}/explore?sort=${sortBy}`);
+  //     const result = await response.json();
+  //     setNfts(result.nfts);
+  //   }
+  // }, [sortBy]);
+  
+  // useEffect(async () => {
+  //   if (prices) {
+  //     const response = await fetch(`${url}/explore?price=${prices}`);
+  //     const result = await response.json();
+  //     setNfts(result.nfts);
+  //   }
+  // }, [prices]);
+
+  const buildApiUrl = () => {
+    let url = `${process.env.apiUrl}/explore`;
+  
     if (sortBy) {
-      const response = await fetch(`${url}/explore?sort=${sortBy}`);
-      const result = await response.json();
-      setNfts(result.nfts);
+      url += `?sort=${sortBy}`;
     }
-  }, [sortBy]);
+  
+    if (prices) {
+      url += `${sortBy ? '&' : '?'}price=${prices}`;
+    }
+  
+    return url;
+  };
   
   useEffect(async () => {
-    if (prices) {
-      const response = await fetch(`${url}/explore?price=${prices}`);
-      const result = await response.json();
-      setNfts(result.nfts);
-    }
-  }, [prices]);
+    const response = await fetch(buildApiUrl());
+    const result = await response.json();
+    setNfts(result.nfts);
+  }, [sortBy, prices]);
   
   
 
@@ -62,10 +82,10 @@ export default function Explore() {
           spacing={3}
           alignItems="flex-start"
         >
-          <Grid item xs="3">
+          <Grid item xs={3}>
             <ExploreTitle text="Explore" />
           </Grid>
-          <Grid item xs="7">
+          <Grid item xs={7}>
             <ExploreFilters
               filters={filters}
               handleSortChange={handleSortChange}
@@ -76,7 +96,7 @@ export default function Explore() {
         <Grid container spacing={3} maxWidth="lg" sx={{ marginLeft: 3 }}>
           {Array.isArray(nfts) &&
             nfts.map((nft) => (
-              <Grid item xs="3">
+              <Grid item xs={3}>
                 <Card
                   key={nft.id}
                   name={nft.name}
