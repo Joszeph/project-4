@@ -13,8 +13,8 @@ export default function index() {
 
   const [activity, setActivity] = useState([]);
   const [activityFilters, setActivityFilters] = useState([]);
-  const [sortBy, setSortBy] = useState();
-  const [type, setType] = useState();
+  const [sortBy, setSortBy] = useState("");
+  const [type, setType] = useState("");
 
   useEffect(async () => {
     try {
@@ -56,25 +56,55 @@ export default function index() {
 
   // }, [sortBy, type]);
 
-  useEffect(async () => {
-    try {
-      const result = await fetch(`${url}/activities?sort=${sortBy}`);
-      const response = await result.json();
-      setActivity(response.activities);
-    } catch (error) {
-      throw error;
+  const buildApiUrl = () => {
+    let url = `${process.env.apiUrl}/activities`;
+  
+    if (sortBy) {
+      url += `?sort=${sortBy}`;
     }
-  }, [sortBy]);
+  
+    if (type) {
+      url += `${sortBy ? '&' : '?'}type=${type}`;
+    }
+  
+    return url;
+  };
+  
 
   useEffect(async () => {
-    try {
-      const result = await fetch(`${url}/activities?type=${type}`);
-      const response = await result.json();
-      setActivity(response.activities);
-    } catch (error) {
-      throw error;
+    try{
+      const response = await fetch(buildApiUrl());
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const result = await response.json();
+      setActivity(result.activities);
+      setActivityFilters(result.filters);
+    }catch(error){
+      console.log(error)
     }
-  }, [type]);
+  }, [sortBy, type]);
+  
+
+  // useEffect(async () => {
+  //   try {
+  //     const result = await fetch(`${url}/activities?sort=${sortBy}`);
+  //     const response = await result.json();
+  //     setActivity(response.activities);
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }, [sortBy]);
+
+  // useEffect(async () => {
+  //   try {
+  //     const result = await fetch(`${url}/activities?type=${type}`);
+  //     const response = await result.json();
+  //     setActivity(response.activities);
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }, [type]);
 
   const handleSortChange = (e) => {
     setSortBy(e.target.value);
