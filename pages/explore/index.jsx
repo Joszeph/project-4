@@ -11,18 +11,45 @@ import Card from "../../src/components/card/Card";
 // import nfts from '../../data/nfts.json'
 
 export default function Explore() {
-
   const url = process.env.apiUrl;
 
   const [nfts, setNfts] = useState([]);
-  const [nftFilters, setNftsFilters] = useState([])
+  const [filters, setFilters] = useState([]);
+  const [sortBy, setSortBy] = useState();
+  const [prices, setPrices] = useState();
 
-  useEffect(async()=>{
-    const response = await fetch(`${url}/explore`)
-    const result = await response.json()
-    setNfts(result)
-    setNftsFilters(result.filters)
-  },[])
+  useEffect(async () => {
+    const response = await fetch(`${url}/explore`);
+    const result = await response.json();
+    setNfts(result.nfts);
+    setFilters(result.filters);
+  }, []);
+  
+  useEffect(async () => {
+    if (sortBy) {
+      const response = await fetch(`${url}/explore?sort=${sortBy}`);
+      const result = await response.json();
+      setNfts(result.nfts);
+    }
+  }, [sortBy]);
+  
+  useEffect(async () => {
+    if (prices) {
+      const response = await fetch(`${url}/explore?price=${prices}`);
+      const result = await response.json();
+      setNfts(result.nfts);
+    }
+  }, [prices]);
+  
+  
+
+  const handleSortChange = (e) => {
+    setSortBy(e.target.value);
+  };
+
+  const handlePriceChange = (e) => {
+    setPrices(e.target.value);
+  };
 
   return (
     <div style={{ width: "100%" }}>
@@ -39,22 +66,28 @@ export default function Explore() {
             <ExploreTitle text="Explore" />
           </Grid>
           <Grid item xs="7">
-            <ExploreFilters  nftFilters={nftFilters}/>
+            <ExploreFilters
+              filters={filters}
+              handleSortChange={handleSortChange}
+              handlePriceChange={handlePriceChange}
+            />
           </Grid>
         </Grid>
         <Grid container spacing={3} maxWidth="lg" sx={{ marginLeft: 3 }}>
-          {Array.isArray(nfts) && nfts.map((nft) => (
-            <Grid item xs="3">
-              <Card
-                name={nft.name}
-                mediaUrl={nft.source.url}
-                user={nft.owner}
-                price={nft.price}
-                currency={nft.currency}
-                likes={nft.likes}
-              ></Card>
-            </Grid>
-          ))}
+          {Array.isArray(nfts) &&
+            nfts.map((nft) => (
+              <Grid item xs="3">
+                <Card
+                  key={nft.id}
+                  name={nft.name}
+                  mediaUrl={nft.source.url}
+                  user={nft.owner}
+                  price={nft.price}
+                  currency={nft.currency}
+                  likes={nft.likes}
+                ></Card>
+              </Grid>
+            ))}
         </Grid>
       </Container>
       <Footer />

@@ -1,8 +1,7 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 
 import classNames from "classnames";
 import styles from "./ExploreFilters.module.scss";
-
 
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
@@ -13,16 +12,9 @@ import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
 import Search from "@mui/icons-material/Search";
 
-export default function ExploreFilters({ NftFilters = { sort: [], price: [] } }) {
-  const [sortBy, setSort] = React.useState();
-  const [prices, setPrice] = React.useState();
+export default function ExploreFilters({ filters, handleSortChange , handlePriceChange }) {
 
-  const handleSortChange = (event) => {
-    setSort(event.target.value);
-  };
-  const handlePriceChange = (event) => {
-    setPrice(event.target.value);
-  };
+
   return (
     <div className={classNames(styles["explore-filters"])}>
       <Stack direction="row" spacing={2} alignItems="center">
@@ -36,13 +28,14 @@ export default function ExploreFilters({ NftFilters = { sort: [], price: [] } })
           <Select
             className={classNames(styles.select)}
             variant="outlined"
-            value={sortBy}
+      
             onChange={handleSortChange}
             labelId="sort-label"
           >
-            {Array.isArray(NftFilters.sort) && NftFilters.sort.map((el) => (
-              <MenuItem value={el.value}> {el.label} </MenuItem>
-            ))}
+            {Array.isArray(filters.sort) &&
+              filters.sort.map((el) => (
+                <MenuItem value={el.value} key={el.id}> {el.label} </MenuItem>
+              ))}
           </Select>
         </FormControl>
         <FormControl variant="filled" size="small" sx={{ minWidth: 150 }}>
@@ -50,13 +43,14 @@ export default function ExploreFilters({ NftFilters = { sort: [], price: [] } })
           <Select
             className={classNames(styles.select)}
             variant="outlined"
-            value={prices}
+         
             onChange={handlePriceChange}
             labelId="price-label"
           >
-            {Array.isArray(NftFilters.price) && NftFilters.price.map((el) => (
-              <MenuItem value={el.value}> {el.label} </MenuItem>
-            ))}
+            {Array.isArray(filters.price) &&
+              filters.price.map((el) => (
+                <MenuItem value={el.value} key={el.id}> {el.label} </MenuItem>
+              ))}
           </Select>
         </FormControl>
         <TextField
