@@ -22,7 +22,7 @@ export default function ActivityFilters({
 }) {
 
   const [sortBy, setSortBy] = useState("");
-  const [type, setType] = useState("");
+  const [price, setType] = useState("");
 
   return (
     <div className={classNames(styles["activity-filters"])}>
@@ -59,7 +59,7 @@ export default function ActivityFilters({
           <InputLabel id="type"></InputLabel>
           <Select
             variant="outlined"
-            value={type}
+            value={price}
             className={classNames(styles.select)}
             onChange={
               handleTypeChange
