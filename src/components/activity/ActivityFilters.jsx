@@ -59,7 +59,7 @@ export default function ActivityFilters({
           <InputLabel id="type"></InputLabel>
           <Select
             variant="outlined"
-            // value={type}
+            value={type}
             className={classNames(styles.select)}
             onChange={(e) => {
               handleTypeChange(e);

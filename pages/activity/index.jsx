@@ -30,7 +30,7 @@ export default function index() {
 
 
 const buildApiUrl = () => {
-  let url = `${process.env.apiUrl}/activities`;
+  let url = `${process.env.apiUrl}/activity`;
 
   if (sortBy) {
     url += `?sort=${sortBy}`;
@@ -47,7 +47,7 @@ useEffect(async () => {
   try{
     const response = await fetch(buildApiUrl());
     const result = await response.json();
-    setActivity(result.activityFilters);
+    setActivity(result.filters);
   }catch(error){
     console.log(error)
   }
