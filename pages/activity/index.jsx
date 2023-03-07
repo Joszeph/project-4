@@ -1,69 +1,82 @@
-import Header from '../../src/components/header/Header';
-import Hero from '../../src/components/hero/Hero';
-import ActivityFilters from '../../src/components/activity/ActivityFilters'
-import ActivityList from '../../src/components/activity/ActivityList'
-import Footer from '../../src/components/footer/Footer';
-import React, {useEffect, useState} from 'react'
+import { useEffect, useState } from "react";
 
-export default function Index() {
+import Header from "../../src/components/header/Header";
+import Hero from "../../src/components/hero/Hero.jsx";
+import ActivityFilters from "../../src/components/activity/ActivityFilters";
+import ActivityList from "../../src/components/activity/ActivityList";
+import Footer from "../../src/components/footer/Footer";
 
-    const [activity, setActivity] = useState()
-    const [activityFilters, setActivityFilters] = useState([])
-    const [sort, setSort] = useState([])
-    const [type, setType] = useState([])
+// import activityDb from '../../data/activity.json'
 
-    const baseUrl = process.env.apiUrl
+export default function index() {
+  const url = process.env.apiUrl;
 
-    useEffect(async () => {
+  const [activity, setActivity] = useState([]);
+  const [activityFilters, setActivityFilters] = useState([]);
+  const [sort, setSort] = useState("");
+  const [type, setType] = useState("");
 
-
-        const result = await fetch(`${baseUrl}/activities`)
-        const response =  await result.json()  
-        
-        setActivity(response.activities)
-        setActivityFilters(response.filters)
-        
-
-      });
-
-      // useEffect(async () => {
-      //   try {
-      //     const result = await fetch(`${baseUrl}/activities?sort=${sort}`)
-      //     const response =  await result.json()
-      //     setActivity(response.activities)
-      //   } catch (error) {
-      //     throw(error)
-      //   }
-
-      // }, [sort])
-  
-      // useEffect(async () => {
-      //   try {
-      //     const result = await fetch(`${baseUrl}/activities?type=${type}`)
-      //     const response =  await result.json()
-      //     setActivity(response.activities)
-      //   } catch (error) {
-      //     throw(error)
-      //   }
-
-      // }, [type])
-
-      const handleTypeChange = (event) => {
-        setSort(event.target.value);
+  useEffect(async () => {
+    try {
+      const response = await fetch(`${url}/activities`);
+      const result = await response.json();
+      setActivity(result.activities);
+      setActivityFilters(result.filters);
+    } catch (err) {
+      console.log(err);
     }
-    const handleSortByChange = (event) => {
-        setType(event.target.value);
+  }, []);
+
+  const buildApiUrl = () => {
+    const url = `${process.env.apiUrl}/activities`;
+
+    if (sort) {
+      url += `?sort=${sort}`;
     }
 
-    return (
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <Header />
-            <Hero text={'Activity'} />
-            <div style={{width: '60%', position: 'relative', top: '-95px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem'}}>
-              <ActivityFilters  filters={activityFilters} handleTypeChange={handleTypeChange} handleSortByChange={handleSortByChange}/>
-               <ActivityList  items={activity}/>
-            </div>
-            <Footer />
-        </div>
-    )
+    if (type) {
+      url += `${sort ? '&' : '?'}type=${type}`;
+    }
+
+    return url;
+  };
+
+  useEffect(async () => {
+    try{
+      const response = await fetch(buildApiUrl());
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const result = await response.json();
+      setActivity(result.activities);
+      setActivityFilters(result.filters);
+    }catch(error){
+      console.log(error)
+    }
+
+  }, [sort, type]);
+
+
+  const handleSortChange = (e) => {
+    // setSort(e.target.value);
+
+  };
+
+  const handleTypeChange = (e) => {
+    // setType(e.target.value);
+  };
+
+  return (
+    <div>
+      <Header />
+      <Hero text="Activity" />
+      <ActivityFilters
+        filters={activityFilters}
+        handleSortChange={handleSortChange}
+        handleTypeChange={handleTypeChange}
+      />
+      <ActivityList items={activity} />
+      <Footer />
+    </div>
+  );
 }
