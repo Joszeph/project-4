@@ -89,8 +89,12 @@ export default function index() {
 
   const url = process.env.apiUrl
 
-  const [activity, setActivity] = React.useState();
-  const [activityFilters, setActivityFilters] = React.useState();
+  const [activity, setActivity] = React.useState([]);
+  const [activityFilters, setActivityFilters] = React.useState({ sort: [], type: [] });
+  const [sortBy, setSort] = React.useState("");
+  const [types, setType] = React.useState([]);
+
+
   async function fetchActivities() {
     const fetchJson = async () => {
       const response = await fetch( url + "/activities");
@@ -106,12 +110,20 @@ export default function index() {
     fetchActivities();
   }, []);
 
+  const handleSortChange = (event)=>{
+    setSort(event.target.value);
+  };
+
+  const handleTypeChange = (event)=>{
+    setType(event.target.value);
+  };
+
   return (
     <div>
       <Header />
       <Hero text="Activity" />
       <ActivityFilters
-        filters={activityFilters}
+        filters={activityFilters} setSort={sortBy} setType={types}
       />
       <ActivityList items={activity} />
       <Footer />
