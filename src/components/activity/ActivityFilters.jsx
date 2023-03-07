@@ -20,12 +20,23 @@ export default function ActivityFilters(
   // handleSortChange,
   // handleTypeChange,
 ) {
-
+  const url = process.env.apiUrl;
   const [sortBy, setSortBy] = useState("");
   const [type, setType] = useState("");
 
   const [activity, setActivity] = useState([]);
   const [activityFilters, setActivityFilters] = useState({ sort: [], type: [] });
+
+  useEffect(async () => {
+    try {
+      const response = await fetch(`${url}/activities`);
+      const result = await response.json();
+      setActivity(result.activities);
+      setActivityFilters(result.filters);
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
 
   const buildApiUrl = () => {
     let url = `${process.env.apiUrl}/activities`;
