@@ -16,7 +16,7 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 
 export default function ActivityFilters({
-  filters={sort: [], type:[]},
+  filters=[],
   handleSortChange,
   handleTypeChange,
 }) {
@@ -24,14 +24,6 @@ export default function ActivityFilters({
   const [sortBy, setSort] = useState("");
   const [type, setType] = useState("");
 
-
-  useEffect(() => {
-    handleSortChange(sortBy);
-  }, [sortBy]);
-
-  useEffect(() => {
-    handleTypeChange(type);
-  }, [type]);
 
 
   return (
@@ -50,7 +42,7 @@ export default function ActivityFilters({
             value={sortBy}
             className={classNames(styles.select)}
             onChange={(e) => {
-              // handleSortChange(e.target.value);
+              handleSortChange(e);
               setSort(e.target.value);
             }}
           >
@@ -72,7 +64,7 @@ export default function ActivityFilters({
             value={type}
             className={classNames(styles.select)}
             onChange={(e) => {
-              // handleTypeChange(e);
+              handleTypeChange(e);
               setType(e.target.value);
             }}
           >

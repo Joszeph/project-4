@@ -20,7 +20,7 @@ export default function ExploreFilters({
   const [sortBy, setSortBy] = useState("");
   const [prices, setPrices] = useState("");
 
-  console.log(sortBy)
+
 
   return (
     <div className={classNames(styles["explore-filters"])}>
@@ -44,7 +44,7 @@ export default function ExploreFilters({
           >
             {Array.isArray(filters.sort) &&
               filters.sort.map((el) => (
-                <MenuItem value={el.value} key={el.id}>
+                <MenuItem value={el.value} key={el.value}>
                   {el.label}
                 </MenuItem>
               ))}
@@ -64,7 +64,7 @@ export default function ExploreFilters({
           >
             {Array.isArray(filters.price) &&
               filters.price.map((el) => (
-                <MenuItem value={el.value} key={el.id}>
+                <MenuItem value={el.value} key={el.value}>
                   {el.label}
                 </MenuItem>
               ))}

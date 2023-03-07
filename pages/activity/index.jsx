@@ -28,7 +28,7 @@ export default function index() {
   }, []);
 
   const buildApiUrl = () => {
-    const url = `${process.env.apiUrl}/activities`;
+    let url = `${process.env.apiUrl}/activities`;
 
     if (sort) {
       url += `?sort=${sort}`;
@@ -58,12 +58,12 @@ export default function index() {
 
 
   const handleSortChange = (e) => {
-    // setSort(e.target.value);
+    setSort(e.target.value);
 
   };
 
   const handleTypeChange = (e) => {
-    // setType(e.target.value);
+    setType(e.target.value);
   };
 
   return (

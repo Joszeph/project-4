@@ -96,9 +96,8 @@ export default function Explore() {
         <Grid container spacing={3} maxWidth="lg" sx={{ marginLeft: 3 }}>
           {Array.isArray(nfts) &&
             nfts.map((nft) => (
-              <Grid item xs={3}>
+              <Grid item xs={3} key={nft.id}>
                 <Card
-                  key={nft.id}
                   name={nft.name}
                   mediaUrl={nft.source.url}
                   user={nft.owner}
