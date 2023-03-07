@@ -16,7 +16,7 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 
 export default function ActivityFilters({
-  filters=[],
+  filters={sort:[], type:[]},
   handleSortChange,
   handleTypeChange,
 }) {

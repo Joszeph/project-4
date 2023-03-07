@@ -9,57 +9,62 @@ import Footer from "../../src/components/footer/Footer";
 // import activityDb from '../../data/activity.json'
 
 export default function index() {
-  const url = process.env.apiUrl;
+  // const url = process.env.apiUrl;
 
   const [activity, setActivity] = useState([]);
-  const [activityFilters, setActivityFilters] = useState([]);
+  const [activityFilters, setActivityFilters] = useState({ sort: [], type: [] });
   const [sort, setSort] = useState("");
   const [type, setType] = useState("");
 
-  useEffect(async () => {
-    try {
-      const response = await fetch(`${url}/activities`);
-      const result = await response.json();
-      setActivity(result.activities);
-      setActivityFilters(result.filters);
-    } catch (err) {
-      console.log(err);
-    }
+  useEffect(() => {
+    const fetchActivities = async () => {
+      try {
+        const response = await fetch(process.env.apiUrl + '/activities');
+        const result = await response.json();
+        setActivity(result.activities);
+        setActivityFilters(result.filters);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchActivities();
   }, []);
 
   const buildApiUrl = () => {
-    let url = `${process.env.apiUrl}/activities`;
+    let url = process.env.apiUrl + '/activities';
 
     if (sort) {
       url += `?sort=${sort}`;
     }
 
     if (type) {
-      url += `${sort ? '&' : '?'}type=${type}`;
+      url += `${sort ? "&" : "?"}type=${type}`;
     }
 
     return url;
   };
-
-  useEffect(async () => {
-    try{
-      const response = await fetch(buildApiUrl());
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+  
+  useEffect(() => {
+    const fetchFilteredActivities = async () => {
+      try {
+        const response = await fetch(buildApiUrl());
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json();
+        setActivity(result.activities);
+      } catch (error) {
+        console.log(error);
       }
-      const result = await response.json();
-      setActivity(result.activities);
-      setActivityFilters(result.filters);
-    }catch(error){
-      console.log(error)
-    }
+    };
 
-  }, [sort, type]);
-
+    fetchFilteredActivities();
+  }, [buildApiUrl]);
+  
 
   const handleSortChange = (e) => {
     setSort(e.target.value);
-
   };
 
   const handleTypeChange = (e) => {
@@ -71,9 +76,9 @@ export default function index() {
       <Header />
       <Hero text="Activity" />
       <ActivityFilters
-        filters={activityFilters}
-        handleSortChange={handleSortChange}
-        handleTypeChange={handleTypeChange}
+      filters={activityFilters}
+      handleSortChange={handleSortChange}
+      handleTypeChange={handleTypeChange}
       />
       <ActivityList items={activity} />
       <Footer />
