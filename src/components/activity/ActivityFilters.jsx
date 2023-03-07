@@ -38,23 +38,25 @@ export default function ActivityFilters(
     }
   }, []);
 
-  const buildApiUrl = () => {
-    let url = `${process.env.apiUrl}/activities`;
+  let urlad = `${process.env.apiUrl}/activities?sort=${sortBy}&type=${type}`
 
-    if (sortBy) {
-      url += `?sort=${sortBy}`;
-    }
+  // const buildApiUrl = () => {
+  //   let url = `${process.env.apiUrl}/activities`;
 
-    if (type) {
-      url += `${sortBy ? '&' : '?'}type=${type}`;
-    }
+  //   if (sortBy) {
+  //     url += `?sort=${sortBy}`;
+  //   }
 
-    return url;
-  };
+  //   if (type) {
+  //     url += `${sortBy ? '&' : '?'}type=${type}`;
+  //   }
+
+  //   return url;
+  // };
 
   useEffect(async () => {
     try{
-      const response = await fetch(buildApiUrl());
+      const response = await fetch(urlad);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
