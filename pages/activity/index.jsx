@@ -67,7 +67,8 @@ export default function index() {
     };
 
     fetchFilteredActivities();
-  }, [buildApiUrl]);
+  }, [sort, type]);
+
   
 
   const handleSortChange = (e) => {
