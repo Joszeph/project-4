@@ -32,15 +32,15 @@ export default function index() {
   }, []);
 
   const buildApiUrl = () => {
-    let url = process.env.apiUrl + '/activities';
+    let url = process.env.apiUrl + `/activities?sort=${sort}&type=${type}`;
 
-    if (sort) {
-      url += `?sort=${sort}`;
-    }
+    // if (sort) {
+    //   url += `?sort=${sort}`;
+    // }
 
-    if (type) {
-      url += `${sort ? "&" : "?"}type=${type}`;
-    }
+    // if (type) {
+    //   url += `${sort ? "&" : "?"}type=${type}`;
+    // }
 
     return url;
   };
