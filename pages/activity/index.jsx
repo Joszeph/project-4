@@ -32,23 +32,25 @@ export default function index() {
   }, []);
 
   const buildApiUrl = () => {
-    let url = process.env.apiUrl + "/activities"
-    // let url = process.env.apiUrl + `/activities?sort=${sort}&type=${type}`;
-
+    let url = process.env.apiUrl + "/activities";
+  
+    const params = [];
+  
     if (sort) {
-      url += `?sort=${sort}`;
+      params.push(`sort=${sort}`);
     }
-
+  
     if (type) {
-      url += `${sort ? "&" : "?"}type=${type}`;
+      params.push(`type=${type}`);
     }
-
-    if(sort && type){
-      url + `?sort=${sort}&type=${type}`
+  
+    if (params.length > 0) {
+      url += "?" + params.join("&");
     }
-
+  
     return url;
   };
+  
   
   useEffect(() => {
     const fetchFilteredActivities = async () => {

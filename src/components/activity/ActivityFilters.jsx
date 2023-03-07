@@ -22,7 +22,7 @@ export default function ActivityFilters({
 }) {
 
   const [sortBy, setSort] = useState("");
-  const [type, setType] = useState("");
+  const [types, setTypes] = useState("");
 
 
 
@@ -61,11 +61,11 @@ export default function ActivityFilters({
           <InputLabel id="type"></InputLabel>
           <Select
             variant="outlined"
-            value={type}
+            value={types}
             className={classNames(styles.select)}
             onChange={(e) => {
               handleTypeChange(e);
-              setType(e.target.value);
+              setTypes(e.target.value);
             }}
           >
             {Array.isArray(filters.type) &&
