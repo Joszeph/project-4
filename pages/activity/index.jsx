@@ -1,78 +1,60 @@
 import { useEffect, useState } from "react";
-
 import Header from "../../src/components/header/Header";
 import Hero from "../../src/components/hero/Hero.jsx";
 import ActivityFilters from "../../src/components/activity/ActivityFilters";
 import ActivityList from "../../src/components/activity/ActivityList";
 import Footer from "../../src/components/footer/Footer";
 
-export default function Index() {
-  const [activity, setActivity] = useState([]);
+export default function index() {
+  const url = process.env.apiUrl;
+  const [activities, setActivities] = useState([]);
   const [activityFilters, setActivityFilters] = useState({
     sort: [],
     type: [],
   });
-  const [sort, setSort] = useState("");
-  const [type, setType] = useState("");
-
-  useEffect(async () => {
-    const fetchActivities = async () => {
-      try {
-        const response = await fetch(process.env.apiUrl + "/activities");
-        const result = await response.json();
-        setActivity(result.activities);
-        setActivityFilters(result.filters);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchActivities();
-  }, []);
-
-  const buildApiUrl = () => {
-    let url = process.env.apiUrl + "/activities";
-
-    const params = [];
-
-    if (sort) {
-      params.push(`sort=${sort}`);
-    }
-
-    if (type) {
-      params.push(`type=${type}`);
-    }
-
-    if (params.length > 0) {
-      url += "?" + params.join("&");
-    }
-
-    return url;
-  };
+  const [selectedFilters, setSelectedFilters] = useState({
+    sortBy: "",
+    type: "",
+  });
 
   useEffect(() => {
-    const fetchFilteredActivities = async () => {
-      try {
-        const response = await fetch(buildApiUrl());
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const result = await response.json();
-        setActivity(result.activities);
-      } catch (error) {
-        console.log(error);
-      }
+    const fetchData = async () => {
+      const response = await fetch(`${url}/activities`);
+      const data = await response.json();
+      setActivities(data.items);
+      setActivityFilters(data.filters);
     };
+    fetchData();
+  }, []);
 
-    fetchFilteredActivities();
-  }, [sort, type]);
+  useEffect(() => {
+    const fetchFilteredData = async () => {
+      let filteredUrl = `${url}/activities?`;
+      if (selectedFilters.sortBy !== "") {
+        filteredUrl += `&sort=${selectedFilters.sortBy}`;
+      }
+      if (selectedFilters.type !== "") {
+        filteredUrl += `&type=${selectedFilters.type}`;
+      }
+      const response = await fetch(filteredUrl);
+      const data = await response.json();
+      setActivities(data.items);
+    };
+    fetchFilteredData();
+  }, [selectedFilters]);
 
-  const handleSortChange = (e) => {
-    setSort(e.target.value);
+  const handleSortByChange = (event) => {
+    setSelectedFilters({
+      ...selectedFilters,
+      sortBy: event.target.value,
+    });
   };
 
-  const handleTypeChange = (e) => {
-    setType(e.target.value);
+  const handleTypeChange = (event) => {
+    setSelectedFilters({
+      ...selectedFilters,
+      type: event.target.value,
+    });
   };
 
   return (
@@ -81,28 +63,11 @@ export default function Index() {
       <Hero text="Activity" />
       <ActivityFilters
         filters={activityFilters}
-        onSortChange={handleSortChange}
+        onSortByChange={handleSortByChange}
         onTypeChange={handleTypeChange}
       />
-      <ActivityList items={activity} sort={sort} type={type} />
+      <ActivityList items={activities} />
       <Footer />
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// I'm an asshole and I copied everything from Joseph

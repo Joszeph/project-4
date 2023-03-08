@@ -4,20 +4,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import classNames from "classnames";
 import styles from "./ActivityFilters.module.scss";
 
-export default function ActivityFilters({ filters = { sort: [], type: [] }, onSortChange, onTypeChange }) {
-  const [sortBy, setSortBy] = useState("");
-  const [type, setType] = useState("");
-
-  const handleSortChange = (e) => {
-    setSortBy(e.target.value);
-    onSortChange(e.target.value);
-  };
-
-  const handleTypeChange = (e) => {
-    setType(e.target.value);
-    onTypeChange(e.target.value);
-  };
-
+export default function ActivityFilters({
+  filters = { sort: [], type: [] },
+  onSortByChange,
+  onTypeChange,
+})
+{
   return (
     <div className={classNames(styles["activity-filters"])}>
       <Stack direction="row" spacing={2} alignItems="center">
@@ -30,13 +22,10 @@ export default function ActivityFilters({ filters = { sort: [], type: [] }, onSo
         >
           <InputLabel id="sort-by">Sort By</InputLabel>
           <Select
-            variant="outlined"
-            value={sortBy}
-            className={classNames(styles.select)}
-            onChange={onSortChange}
-            labelId="sort-by"
-            id="sort-by-select"
-          >
+          value=""
+          className={classNames(styles.select)}
+          onChange={onSortByChange}
+        >
             {Array.isArray(filters.sort) &&
               filters.sort.map((element) => (
                 <MenuItem value={element.value} filter={element.label} key={element.value}>
@@ -52,14 +41,12 @@ export default function ActivityFilters({ filters = { sort: [], type: [] }, onSo
           sx={{ minWidth: 150 }}
         >
           <InputLabel id="type">Type</InputLabel>
-          <Select
-            variant="outlined"
-            value={type}
-            className={classNames(styles.select)}
-            onChange={onTypeChange}
-            labelId="type"
-            id="sort-by-type"
-          >
+  
+             <Select
+          value=""
+          className={classNames(styles.select)}
+          onChange={onTypeChange}
+        >
             {Array.isArray(filters.type) &&
               filters.type.map((element) => (
                 <MenuItem value={element.value} filter={element.label} key={element.value}>
