@@ -30,24 +30,6 @@ export default function Index() {
     fetchActivities();
   }, []);
 
-  useEffect(() => {
-    const fetchFilteredActivities = async () => {
-      try {
-        const url = buildApiUrl();
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const result = await response.json();
-        setActivity(result.activities);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchFilteredActivities();
-  }, [sort, type]);
-
   const buildApiUrl = () => {
     let url = process.env.apiUrl + "/activities";
 
@@ -67,6 +49,23 @@ export default function Index() {
 
     return url;
   };
+
+  useEffect(() => {
+    const fetchFilteredActivities = async () => {
+      try {
+        const response = await fetch(buildApiUrl());
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json();
+        setActivity(result.activities);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchFilteredActivities();
+  }, [sort, type]);
 
   const handleSortChange = (e) => {
     setSort(e.target.value);

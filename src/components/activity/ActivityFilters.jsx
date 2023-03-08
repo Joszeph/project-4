@@ -1,28 +1,22 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-
+import React, { useState } from "react";
+import { FormControl, InputAdornment, InputLabel, MenuItem, Select, Stack, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import classNames from "classnames";
 import styles from "./ActivityFilters.module.scss";
-import {
-  FormControl,
-  Select,
-  InputLabel,
-  MenuItem,
-  Stack,
-  TextField,
-  InputAdornment,
-  Search,
-} from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 
-export default function ActivityFilters({
-  filters = { sort: [], type: [] },
-  handleSortChange,
-  handleTypeChange,
-  sortBy,
-  types,
-}) {
+export default function ActivityFilters({ filters = { sort: [], type: [] }, onSortChange, onTypeChange }) {
+  const [sortBy, setSortBy] = useState("");
+  const [type, setType] = useState("");
 
+  const handleSortChange = (e) => {
+    setSortBy(e.target.value);
+    // onSortChange(e.target.value);
+  };
+
+  const handleTypeChange = (e) => {
+    setType(e.target.value);
+    // onTypeChange(e.target.value);
+  };
 
   return (
     <div className={classNames(styles["activity-filters"])}>
@@ -45,7 +39,9 @@ export default function ActivityFilters({
           >
             {Array.isArray(filters.sort) &&
               filters.sort.map((element) => (
-                <MenuItem value={element.value} filter={element.label} key={element.value}/>
+                <MenuItem value={element.value} filter={element.label} key={element.value}>
+                  {element.label}
+                </MenuItem>
               ))}
           </Select>
         </FormControl>
@@ -58,7 +54,7 @@ export default function ActivityFilters({
           <InputLabel id="type">Type</InputLabel>
           <Select
             variant="outlined"
-            value={sortBy}
+            value={type}
             className={classNames(styles.select)}
             onChange={handleTypeChange}
             labelId="type"
@@ -66,7 +62,9 @@ export default function ActivityFilters({
           >
             {Array.isArray(filters.type) &&
               filters.type.map((element) => (
-                <MenuItem value={element.value} filter={element.label} key={element.value}/>
+                <MenuItem value={element.value} filter={element.label} key={element.value}>
+                  {element.label}
+                </MenuItem>
               ))}
           </Select>
         </FormControl>
@@ -84,7 +82,6 @@ export default function ActivityFilters({
     </div>
   );
 }
-
 
 
 
