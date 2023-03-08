@@ -64,10 +64,11 @@ export default function ActivityFilters({
             variant="outlined"
             value={''}
             className={classNames(styles.select)}
-            onChange={(e) => {
-              handleSortChange(e);
-              setSort(e.target.value);
-            }}
+            // onChange={(e) => {
+            //   handleSortChange(e);
+            //   setSort(e.target.value);
+            // }}
+            onChange={handleSortChange}
           >
             {Array.isArray(filters.sort) &&
               filters.sort.map((element) => (
@@ -86,10 +87,11 @@ export default function ActivityFilters({
             variant="outlined"
             value={''}
             className={classNames(styles.select)}
-            onChange={(e) => {
-              handleTypeChange(e);
-              setTypes(e.target.value);
-            }}
+            // onChange={(e) => {
+            //   handleTypeChange(e);
+            //   setTypes(e.target.value);
+            // }}
+            onChange={handleTypeChange}
           >
             {Array.isArray(filters.type) &&
               filters.type.map((element) => (

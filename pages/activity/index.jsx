@@ -12,37 +12,13 @@ export default function index() {
   // const url = process.env.apiUrl;
 
 
-//   ________________$$$$
-// ______________$$____$$
-// ______________$$____$$
-// ______________$$____$$
-// ______________$$____$$
-// ______________$$____$$
-// __________$$$$$$____$$$$$$
-// ________$$____$$____$$____$$$$
-// ________$$____$$____$$____$$__$$
-// $$$$$$__$$____$$____$$____$$____$$
-// $$____$$$$________________$$____$$
-// $$______$$______________________$$
-// __$$____$$______________________$$
-// ___$$$__$$______________________$$
-// ____$$__________________________$$
-// _____$$$________________________$$
-// ______$$______________________$$$
-// _______$$$____________________$$
-// ________$$____________________$$
-// _________$$$________________$$$
-// __________$$________________$$
-// __________$$$$$$$$$$$$$$$$$$$$
-// COPY THIS!!!
-
   const [activity, setActivity] = useState([]);
   const [activityFilters, setActivityFilters] = useState({ sort: [], type: [] });
   const [sort, setSort] = useState("");
   const [type, setType] = useState("");
 
-  useEffect(() => {
-    const fetchActivities = async () => {
+  useEffect(async () => {
+    // const fetchActivities = async () => {
       try {
         const response = await fetch(process.env.apiUrl + '/activities');
         const result = await response.json();
@@ -51,48 +27,48 @@ export default function index() {
       } catch (error) {
         console.log(error);
       }
-    };
+    // };
 
-    fetchActivities();
+    // fetchActivities();
   }, []);
 
-  const buildApiUrl = () => {
-    let url = process.env.apiUrl + "/activities";
+  // const buildApiUrl = () => {
+  //   let url = process.env.apiUrl + "/activities";
   
-    const params = [];
+  //   const params = [];
   
-    if (sort) {
-      params.push(`sort=${sort}`);
-    }
+  //   if (sort) {
+  //     params.push(`sort=${sort}`);
+  //   }
   
-    if (type) {
-      params.push(`type=${type}`);
-    }
+  //   if (type) {
+  //     params.push(`type=${type}`);
+  //   }
   
-    if (params.length > 0) {
-      url += "?" + params.join("&");
-    }
+  //   if (params.length > 0) {
+  //     url += "?" + params.join("&");
+  //   }
   
-    return url;
-  };
+  //   return url;
+  // };
   
   
-  useEffect(() => {
-    const fetchFilteredActivities = async () => {
-      try {
-        const response = await fetch(buildApiUrl());
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const result = await response.json();
-        setActivity(result.activities);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchFilteredActivities = async () => {
+  //     try {
+  //       const response = await fetch(buildApiUrl());
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! status: ${response.status}`);
+  //       }
+  //       const result = await response.json();
+  //       setActivity(result.activities);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
 
-    fetchFilteredActivities();
-  }, [sort, type]);
+  //   fetchFilteredActivities();
+  // }, [sort, type]);
 
   
 
