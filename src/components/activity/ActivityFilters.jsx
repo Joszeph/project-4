@@ -62,7 +62,7 @@ export default function ActivityFilters({
           <InputLabel id="sort-by"></InputLabel>
           <Select
             variant="outlined"
-            value={sortBy}
+            value={''}
             className={classNames(styles.select)}
             onChange={(e) => {
               handleSortChange(e);
@@ -84,7 +84,7 @@ export default function ActivityFilters({
           <InputLabel id="type"></InputLabel>
           <Select
             variant="outlined"
-            value={types}
+            value={''}
             className={classNames(styles.select)}
             onChange={(e) => {
               handleTypeChange(e);

@@ -41,25 +41,50 @@ export default function Explore() {
   //   }
   // }, [prices]);
 
-  const buildApiUrl = () => {
-    let url = `${process.env.apiUrl}/explore`;
+
+  //   ________________$$$$
+// ______________$$____$$
+// ______________$$____$$
+// ______________$$____$$
+// ______________$$____$$
+// ______________$$____$$
+// __________$$$$$$____$$$$$$
+// ________$$____$$____$$____$$$$
+// ________$$____$$____$$____$$__$$
+// $$$$$$__$$____$$____$$____$$____$$
+// $$____$$$$________________$$____$$
+// $$______$$______________________$$
+// __$$____$$______________________$$
+// ___$$$__$$______________________$$
+// ____$$__________________________$$
+// _____$$$________________________$$
+// ______$$______________________$$$
+// _______$$$____________________$$
+// ________$$____________________$$
+// _________$$$________________$$$
+// __________$$________________$$
+// __________$$$$$$$$$$$$$$$$$$$$
+// COPY THIS!!!
+
+  // const buildApiUrl = () => {
+  //   let url = `${process.env.apiUrl}/explore`;
   
-    if (sortBy) {
-      url += `?sort=${sortBy}`;
-    }
+  //   if (sortBy) {
+  //     url += `?sort=${sortBy}`;
+  //   }
   
-    if (prices) {
-      url += `${sortBy ? '&' : '?'}price=${prices}`;
-    }
+  //   if (prices) {
+  //     url += `${sortBy ? '&' : '?'}price=${prices}`;
+  //   }
   
-    return url;
-  };
+  //   return url;
+  // };
   
-  useEffect(async () => {
-    const response = await fetch(buildApiUrl());
-    const result = await response.json();
-    setNfts(result.nfts);
-  }, [sortBy, prices]);
+  // useEffect(async () => {
+  //   const response = await fetch(buildApiUrl());
+  //   const result = await response.json();
+  //   setNfts(result.nfts);
+  // }, [sortBy, prices]);
   
   
 
