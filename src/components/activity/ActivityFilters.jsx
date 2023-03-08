@@ -16,37 +16,12 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 
 export default function ActivityFilters({
-  filters={sort:[], type:[]},
+  filters = { sort: [], type: [] },
   handleSortChange,
   handleTypeChange,
+  sortBy,
+  types,
 }) {
-
-//   ________________$$$$
-// ______________$$____$$
-// ______________$$____$$
-// ______________$$____$$
-// ______________$$____$$
-// ______________$$____$$
-// __________$$$$$$____$$$$$$
-// ________$$____$$____$$____$$$$
-// ________$$____$$____$$____$$__$$
-// $$$$$$__$$____$$____$$____$$____$$
-// $$____$$$$________________$$____$$
-// $$______$$______________________$$
-// __$$____$$______________________$$
-// ___$$$__$$______________________$$
-// ____$$__________________________$$
-// _____$$$________________________$$
-// ______$$______________________$$$
-// _______$$$____________________$$
-// ________$$____________________$$
-// _________$$$________________$$$
-// __________$$________________$$
-// __________$$$$$$$$$$$$$$$$$$$$
-// COPY THIS!!!
-
-  const [sortBy, setSort] = useState("");
-  const [types, setTypes] = useState("");
 
 
   return (
@@ -59,16 +34,14 @@ export default function ActivityFilters({
           size="small"
           sx={{ minWidth: 150 }}
         >
-          <InputLabel id="sort-by"></InputLabel>
+          <InputLabel id="sort-by">Sort By</InputLabel>
           <Select
             variant="outlined"
             value={sortBy}
             className={classNames(styles.select)}
-            onChange={(e) => {
-              handleSortChange(e);
-              setSort(e.target.value);
-            }}
-
+            onChange={handleSortChange}
+            labelId="sort-by"
+            id="sort-by-select"
           >
             {Array.isArray(filters.sort) &&
               filters.sort.map((element) => (
@@ -82,16 +55,14 @@ export default function ActivityFilters({
           size="small"
           sx={{ minWidth: 150 }}
         >
-          <InputLabel id="type"></InputLabel>
+          <InputLabel id="type">Type</InputLabel>
           <Select
             variant="outlined"
-            value={types}
+            value={sortBy}
             className={classNames(styles.select)}
-            onChange={(e) => {
-              handleTypeChange(e);
-              setTypes(e.target.value);
-            }}
-    
+            onChange={handleTypeChange}
+            labelId="type"
+            id="sort-by-type"
           >
             {Array.isArray(filters.type) &&
               filters.type.map((element) => (
