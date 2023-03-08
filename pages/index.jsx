@@ -22,8 +22,13 @@ export default function Home() {
   const [collectorFilters, setCollectorFilters] = useState([])
   const [auctions, setAuction] = useState([]);
   const [auctionFilters, setAuctionFilters] = useState([])
+  const [filterValue, setFilterValue] = useState() 
 
   const url = process.env.apiUrl;
+
+  const handleThisWeekChange = (event) => {
+    setFilterValue(event.target.value)    
+  }
 
   //Fetching Featured
   async function fetchFeatured() {
@@ -86,11 +91,18 @@ export default function Home() {
     // setAuctionNfts(dataNfts);
   }, [dataFeatured, dataTrending, dataUsers, dataNfts]);
 
+
+  useEffect(async () => {
+    const result = await fetch(`https://project-4-api.boom.dev/trending?sort=${filterValue}`)
+    const response =  await result.json()
+    setTrendingCards(response.nfts)
+  }, [filterValue])
+
   return (
     <div>
       <Header />
       <Featured items={featuredCards} />
-      <Trending cards={trendingCards} filters={trendingFilters}/>
+      <Trending cards={trendingCards} filters={trendingFilters} handleThisWeekChange={handleThisWeekChange}/>
       <TopCollectors collectors={topCollectors} filters={collectorFilters}/>
       <How />
       <Auctions cards={auctions} filters={auctionFilters}/>
