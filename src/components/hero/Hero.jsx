@@ -12,3 +12,4 @@ export default function Hero({text}) {
   )
 }
 
+// I'm an asshole and I copied everything from Joseph

@@ -84,3 +84,24 @@ export default function ActivityFilters({
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// I'm an asshole and I copied everything from Joseph

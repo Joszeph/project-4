@@ -90,3 +90,20 @@ export default function Index() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// I'm an asshole and I copied everything from Joseph
