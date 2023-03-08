@@ -4,12 +4,19 @@ import SearchIcon from "@mui/icons-material/Search";
 import classNames from "classnames";
 import styles from "./ActivityFilters.module.scss";
 
-export default function ActivityFilters({
-  filters = { sort: [], type: [] },
-  onSortByChange,
-  onTypeChange,
-})
-{
+export default function ActivityFilters({ filters = { sort: [], type: [] }}) {
+  const [sortBy, setSortBy] = useState("");
+  const [type, setType] = useState("");
+
+  const handleSortChange = (e) => {
+    setSortBy(e.target.value);
+
+  };
+
+  const handleTypeChange = (e) => {
+    setType(e.target.value);
+
+  }
   return (
     <div className={classNames(styles["activity-filters"])}>
       <Stack direction="row" spacing={2} alignItems="center">
@@ -22,10 +29,13 @@ export default function ActivityFilters({
         >
           <InputLabel id="sort-by">Sort By</InputLabel>
           <Select
-          value=""
-          className={classNames(styles.select)}
-          onChange={onSortByChange}
-        >
+            variant="outlined"
+            value={sortBy}
+            className={classNames(styles.select)}
+            onChange={handleSortChange}
+            labelId="sort-by"
+            id="sort-by-select"
+          >
             {Array.isArray(filters.sort) &&
               filters.sort.map((element) => (
                 <MenuItem value={element.value} filter={element.label} key={element.value}>
@@ -41,12 +51,14 @@ export default function ActivityFilters({
           sx={{ minWidth: 150 }}
         >
           <InputLabel id="type">Type</InputLabel>
-  
-             <Select
-          value=""
-          className={classNames(styles.select)}
-          onChange={onTypeChange}
-        >
+          <Select
+            variant="outlined"
+            value={type}
+            className={classNames(styles.select)}
+            onChange={handleTypeChange}
+            labelId="type"
+            id="sort-by-type"
+          >
             {Array.isArray(filters.type) &&
               filters.type.map((element) => (
                 <MenuItem value={element.value} filter={element.label} key={element.value}>
