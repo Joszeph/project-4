@@ -5,18 +5,9 @@ import classNames from "classnames";
 import styles from "./ActivityFilters.module.scss";
 
 export default function ActivityFilters({ filters = { sort: [], type: [] }}) {
-  const [sortBy, setSortBy] = useState("");
-  const [type, setType] = useState("");
 
-  const handleSortChange = (e) => {
-    setSortBy(e.target.value);
 
-  };
-
-  const handleTypeChange = (e) => {
-    setType(e.target.value);
-
-  }
+  
   return (
     <div className={classNames(styles["activity-filters"])}>
       <Stack direction="row" spacing={2} alignItems="center">
@@ -30,9 +21,9 @@ export default function ActivityFilters({ filters = { sort: [], type: [] }}) {
           <InputLabel id="sort-by">Sort By</InputLabel>
           <Select
             variant="outlined"
-            value={sortBy}
+            value={'1'}
             className={classNames(styles.select)}
-            onChange={handleSortChange}
+  
             labelId="sort-by"
             id="sort-by-select"
           >
@@ -53,9 +44,9 @@ export default function ActivityFilters({ filters = { sort: [], type: [] }}) {
           <InputLabel id="type">Type</InputLabel>
           <Select
             variant="outlined"
-            value={type}
+            value={'1'}
             className={classNames(styles.select)}
-            onChange={handleTypeChange}
+    
             labelId="type"
             id="sort-by-type"
           >
