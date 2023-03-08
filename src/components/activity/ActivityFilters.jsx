@@ -62,13 +62,13 @@ export default function ActivityFilters({
           <InputLabel id="sort-by"></InputLabel>
           <Select
             variant="outlined"
-            value={''}
+            value={sortBy}
             className={classNames(styles.select)}
-            // onChange={(e) => {
-            //   handleSortChange(e);
-            //   setSort(e.target.value);
-            // }}
-            onChange={handleSortChange}
+            onChange={(e) => {
+              handleSortChange(e);
+              setSort(e.target.value);
+            }}
+
           >
             {Array.isArray(filters.sort) &&
               filters.sort.map((element) => (
@@ -85,13 +85,13 @@ export default function ActivityFilters({
           <InputLabel id="type"></InputLabel>
           <Select
             variant="outlined"
-            value={''}
+            value={types}
             className={classNames(styles.select)}
-            // onChange={(e) => {
-            //   handleTypeChange(e);
-            //   setTypes(e.target.value);
-            // }}
-            onChange={handleTypeChange}
+            onChange={(e) => {
+              handleTypeChange(e);
+              setTypes(e.target.value);
+            }}
+    
           >
             {Array.isArray(filters.type) &&
               filters.type.map((element) => (
