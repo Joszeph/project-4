@@ -81,8 +81,8 @@ export default function Index() {
       <Hero text="Activity" />
       <ActivityFilters
         filters={activityFilters}
-        handleSortChange={handleSortChange}
-        handleTypeChange={handleTypeChange}
+        onSortChange={handleSortChange}
+        onTypeChange={handleTypeChange}
       />
       <ActivityList items={activity} sort={sort} type={type} />
       <Footer />

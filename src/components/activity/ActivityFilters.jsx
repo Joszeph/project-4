@@ -10,12 +10,12 @@ export default function ActivityFilters({ filters = { sort: [], type: [] }, onSo
 
   const handleSortChange = (e) => {
     setSortBy(e.target.value);
-    // onSortChange(e.target.value);
+    onSortChange(e.target.value);
   };
 
   const handleTypeChange = (e) => {
     setType(e.target.value);
-    // onTypeChange(e.target.value);
+    onTypeChange(e.target.value);
   };
 
   return (
@@ -33,7 +33,7 @@ export default function ActivityFilters({ filters = { sort: [], type: [] }, onSo
             variant="outlined"
             value={sortBy}
             className={classNames(styles.select)}
-            onChange={handleSortChange}
+            onChange={onSortChange}
             labelId="sort-by"
             id="sort-by-select"
           >
@@ -56,7 +56,7 @@ export default function ActivityFilters({ filters = { sort: [], type: [] }, onSo
             variant="outlined"
             value={type}
             className={classNames(styles.select)}
-            onChange={handleTypeChange}
+            onChange={onTypeChange}
             labelId="type"
             id="sort-by-type"
           >
