@@ -6,7 +6,6 @@ import ActivityFilters from "../../src/components/activity/ActivityFilters";
 import ActivityList from "../../src/components/activity/ActivityList";
 import Footer from "../../src/components/footer/Footer";
 
-// import activityDb from '../../data/activity.json'
 
 export default function index() {
 
@@ -14,6 +13,8 @@ export default function index() {
 
   const [activity, setActivity] = useState([]);
   const [activityFilters, setActivityFilters] = useState([])
+  const [filters, setFilters] = useState({ sort: '', type: '' });
+
 
  useEffect(async() => {
   const response = await fetch(`${url}/activities`)
@@ -22,11 +23,22 @@ export default function index() {
   setActivityFilters(result.filters)
 }, []);
 
+const fetchActivities = async () => {
+  const response = await fetch(`${url}/activities?sort=${sort}&type=${type}`);
+  const result = await response.json();
+  setActivity(result.activities);
+  setActivityFilters(result.filters);
+};
+
+useEffect(() => {
+  fetchActivities();
+}, [filters]);
+
   return (
     <div>
       <Header />
       <Hero text="Activity"/>
-      <ActivityFilters filters={activityFilters}/>
+      <ActivityFilters filters={activityFilters} setFilters={setFilters} onApply={fetchActivities}/>
       <ActivityList items={activity} />
       <Footer />
     </div>
