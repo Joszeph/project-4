@@ -1,102 +1,49 @@
-import React, { useState } from "react";
-import {
-  FormControl,
-  InputAdornment,
-  InputLabel,
-  MenuItem,
-  Select,
-  Stack,
-  TextField,
-} from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import classNames from "classnames";
 import styles from "./ActivityFilters.module.scss";
+import classNames from "classnames";
+import {Typography, Container, FormControl, Select, InputLabel, MenuItem, Stack, TextField, InputAdornment} from '@mui/material';
+import React from 'react';
+import SearchIcon from '@mui/icons-material/Search';
 
-export default function ActivityFilters({ filters = { sort: [], type: [] }, setFilters, onApply }) {
-
-  const handleClick = () => {
-    onApply();
-  };
+export default function ActivityFilters({filters = [], handleTypeChange, handleSortByChange}) {
 
 
 
-  return (
-    <div className={classNames(styles["activity-filters"])}>
-      <Stack direction="row" spacing={2} alignItems="center">
-        <FormControl
-          className={classNames(styles.form)}
-          variant="filled"
-          margin="dense"
-          size="small"
-          sx={{ minWidth: 150 }}
-        >
-          <InputLabel id="sort-by">Sort By</InputLabel>
-          <Select
-            variant="outlined"
-            value={filters.sort}
-            onChange={(event) => {
-              setFilters({ ...filters, sort: event.target.value });
-              handleClick();
-            }}
-            className={classNames(styles.select)}
-            labelId="sort-by"
-            id="sort-by-select"
-          >
-            {Array.isArray(filters.sort) &&
-              filters.sort.map((element) => (
-                <MenuItem
-                  value={element.value}
-                  filter={element.label}
-                  key={element.value}
-                >
-                  {element.label}
-                </MenuItem>
-              ))}
-          </Select>
-        </FormControl>
-        <FormControl
-          variant="filled"
-          margin="dense"
-          size="small"
-          sx={{ minWidth: 150 }}
-        >
-          <InputLabel id="type">Type</InputLabel>
-          <Select
-            variant="outlined"
-            value={filters.type}
-            onChange={(event) => {
-              setFilters({ ...filters, type: event.target.value });
-              handleClick();
-            }}
-            className={classNames(styles.select)}
-            labelId="type"
-            id="sort-by-type"
-          >
-            {Array.isArray(filters.type) &&
-              filters.type.map((element) => (
-                <MenuItem
-                  value={element.value}
-                  filter={element.label}
-                  key={element.value}
-                >
-                  {element.label}
-                </MenuItem>
-              ))}
-          </Select>
-        </FormControl>
-        <TextField
-          variant="standard"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon className={classNames(styles.icon)} />
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Stack>
-    </div>
-  );
+    return (
+        <div  className={classNames(styles['activity-filters'])}>
+            <Stack direction="row" justifyContent="flex-end" alignItems="flex-end" spacing={1} >
+            <FormControl fullWidth sx={{flex: 1}}>
+            <InputLabel id="select-label">Sort by</InputLabel>
+            <Select
+             label="Sort by"
+             onChange={handleSortByChange}
+              >
+            {Array.isArray(filters.sort) && filters.sort?.map((s, i) => (
+            <MenuItem key={i} value={s.value}>{s.label}</MenuItem>
+              ))}  
+              </Select>
+              </FormControl>
+            <FormControl fullWidth sx={{flex: 1}}>
+            <InputLabel id="select-label">Type</InputLabel>
+            <Select
+             label="Price range"
+             onChange={handleTypeChange}
+              >
+             {Array.isArray(filters.type) && filters.type.map((s, i) => (
+                 <MenuItem key={i} value={s.value}>{s.label}</MenuItem>
+              ))}  
+              </Select>
+              </FormControl >
+              <FormControl fullWidth variant="standard" sx={{flex: 2}}> 
+                 <TextField
+                 className={classNames(styles['activity-input'])}      
+                 focused={false}
+                 fullWidth={true}
+                 InputProps={{  
+                 startAdornment: <InputAdornment position="start"> <SearchIcon style={{color: 'ffffff', marginLeft: '10px'}}/> </InputAdornment>,
+                }}
+                 />  
+                 </FormControl>
+            </Stack>
+        </div>
+    )
 }
-
-
